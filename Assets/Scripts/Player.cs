@@ -2,7 +2,19 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public enum State
+    {
+        None = 0,
+
+        Idle,
+        Running,
+        Jumping,
+        Falling,
+        Stunned
+    }
+
     [SerializeField] private float m_Movespeed = 5f;
+    [SerializeField] private float m_RampUpTime = 0.5f;
 
     [Header("Jump Settings")]
     [SerializeField] private float m_MinJumpHeight = 1f;
@@ -12,6 +24,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float m_JumpBufferingTime = 0.3f;
     [SerializeField] private float m_CoyoteTime = 0.2f;
 
+    [SerializeField] private float m_MaxFallSpeed = 15f;
+
     [Space]
     [SerializeField] private LayerMask m_GroundedLayerMask;
 
@@ -20,6 +34,8 @@ public class Player : MonoBehaviour
     private bool m_IsGrounded = false;
 
     private float m_MovementInput = 0f;
+    private float m_Movement = 0f;
+
     private bool m_IsJumping = false;
 
     private float m_JumpInitialVelocity;
@@ -30,6 +46,8 @@ public class Player : MonoBehaviour
 
     private Timer m_JumpBufferTimer;
     private bool m_JumpInQueue = false;
+
+    private State m_CurrentState = State.Idle;
 
     private void Awake()
     {
@@ -53,6 +71,23 @@ public class Player : MonoBehaviour
     {
         UpdateGroundedState();
 
+        switch (m_CurrentState)
+        {
+            case State.Idle:
+                break;
+            case State.Running:
+                break;
+            case State.Jumping:
+                break;
+            case State.Falling:
+                break;
+            case State.Stunned:
+                break;
+            case State.None:
+                Debug.LogError("Invalided player state!");
+                break;
+        }
+
         if (m_JumpInQueue && m_JumpBufferTimer.HasEnded())
         {
             m_JumpInQueue = false;
@@ -74,7 +109,23 @@ public class Player : MonoBehaviour
             m_RB.gravityScale = m_GravityMultiplierWhenFalling;
         }
 
-        m_RB.velocity = new Vector2(m_Movespeed * m_MovementInput, m_RB.velocity.y);
+        if (m_RB.velocity.y < -m_MaxFallSpeed)
+        {
+            m_RB.velocity = new Vector2(m_RB.velocity.x, -m_MaxFallSpeed);
+        }
+
+        Mathf.Sign(m_MovementInput);
+        if (Mathf.Abs(m_Movement - m_MovementInput) > 0.01f)
+        {
+            float diff = m_MovementInput - m_Movement;
+            m_Movement += Mathf.Min(diff, Mathf.Sign(diff) * (1f / m_RampUpTime) * Time.fixedDeltaTime);
+        }
+        else
+        {
+            m_Movement = m_MovementInput;
+        }
+
+        m_RB.velocity = new Vector2(m_Movespeed * m_Movement, m_RB.velocity.y);
     }
 
     public void SetMovementInput(float input)
@@ -111,7 +162,7 @@ public class Player : MonoBehaviour
 
     private void UpdateGroundedState()
     {
-        RaycastHit2D hit = Physics2D.CircleCast(transform.position, 0.5f, Vector2.down, 0.05f, m_GroundedLayerMask);
+        RaycastHit2D hit = Physics2D.CircleCast(transform.position, 0.25f, Vector2.down, 0.3f, m_GroundedLayerMask);
         bool grounded = hit.collider && Vector2.Dot(hit.normal, Vector2.up) > 0.5f;
 
         if (grounded && !m_IsGrounded)
