@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamageable
 {
     public enum State
     {
@@ -10,13 +10,16 @@ public class Player : MonoBehaviour
         Running,
         Jumping,
         Falling,
-        Stunned
+        Damaged,
+        Stunned,
+        Dead
     }
 
     private static readonly int k_IdleAnimStateId = Animator.StringToHash("Idle");
     private static readonly int k_RunAnimStateId = Animator.StringToHash("Run");
     private static readonly int k_JumpAnimStateId = Animator.StringToHash("Jump");
     private static readonly int k_FallAnimStateId = Animator.StringToHash("Fall");
+    private static readonly int k_DamagedAnimStateId = Animator.StringToHash("Damaged");
 
     [Header("Movement")]
     [SerializeField] private float m_Movespeed = 5f;
@@ -63,6 +66,8 @@ public class Player : MonoBehaviour
 
     private State m_CurrentState = State.Idle;
 
+    private int m_Health;
+
     private void Awake()
     {
         m_Animator = GetComponent<Animator>();
@@ -82,6 +87,16 @@ public class Player : MonoBehaviour
         m_JumpInitialVelocity = v0;
 
         m_MinJumpTime = (-v0 + Mathf.Sqrt(v0 * v0 - 4f * 0.5f * g * (-m_MinJumpHeight))) / (g);
+
+        m_Health = m_MaxHealth;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            TakeDamage(1);
+        }
     }
 
     private void FixedUpdate()
@@ -103,9 +118,8 @@ public class Player : MonoBehaviour
             case State.Idle:
                 if (!m_IsGrounded)
                 {
-                    m_RB.gravityScale = m_GravityMultiplierWhenFalling;
-                    m_CurrentState = State.Falling;
-                    m_Animator.Play(k_FallAnimStateId);
+                    m_CoyoteTimer.Start(m_CoyoteTime);
+                    StartFalling();
                 }
                 else if (Mathf.Abs(m_Movement) > 0.01f)
                 {
@@ -116,9 +130,8 @@ public class Player : MonoBehaviour
             case State.Running:
                 if (!m_IsGrounded)
                 {
-                    m_RB.gravityScale = m_GravityMultiplierWhenFalling;
-                    m_CurrentState = State.Falling;
-                    m_Animator.Play(k_FallAnimStateId);
+                    m_CoyoteTimer.Start(m_CoyoteTime);
+                    StartFalling();
                 }
                 else if (Mathf.Abs(m_Movement) < 0.01f)
                 {
@@ -129,32 +142,29 @@ public class Player : MonoBehaviour
             case State.Jumping:
                 if (m_JumpTimer.HasEnded() && m_IsGrounded)
                 {
-                    m_RB.gravityScale = m_GravityMultiplier;
-                    m_CurrentState = State.Idle;
-                    m_Animator.Play(k_IdleAnimStateId);
-                }
-                else if (!m_JumpInput && m_JumpTimer.HasEnded())
-                {
-                    m_CurrentState = State.Falling;
-                    m_RB.gravityScale = m_GravityMultiplierWhenFalling;
-                    m_Animator.Play(k_FallAnimStateId);
+                    Land();
                 }
                 else if (m_RB.velocity.y <= 0f)
                 {
-                    m_CurrentState = State.Falling;
+                    StartFalling();
+                }
+                else if (!m_JumpInput && m_JumpTimer.HasEnded())
+                {
                     m_RB.gravityScale = m_GravityMultiplierWhenFalling;
-                    m_Animator.Play(k_FallAnimStateId);
                 }
                 break;
             case State.Falling:
                 if (m_IsGrounded)
                 {
-                    m_RB.gravityScale = m_GravityMultiplier;
-                    m_CurrentState = State.Idle;
-                    m_Animator.Play(k_IdleAnimStateId);
+                    Land();
                 }
                 break;
+            case State.Damaged:
+                m_CurrentState = State.Falling;
+                break;
             case State.Stunned:
+                break;
+            case State.Dead:
                 break;
             case State.None:
                 Debug.LogError("Invalided player state!");
@@ -164,46 +174,26 @@ public class Player : MonoBehaviour
         switch (m_CurrentState)
         {
             case State.Idle:
-                
                 break;
             case State.Running:
-                if (Mathf.Abs(m_Movement) > 0.01f)
-                {
-                    bool isLeft = Mathf.Sign(m_Movement) < 0f;
-                    if (isLeft != m_IsFlipped)
-                    {
-                        m_IsFlipped = isLeft;
-                        m_Sprite.flipX = m_IsFlipped;
-                    }
-                }
+                HandleFlipping();
                 break;
             case State.Jumping:
-                if (Mathf.Abs(m_Movement) > 0.01f)
-                {
-                    bool isLeft = Mathf.Sign(m_Movement) < 0f;
-                    if (isLeft != m_IsFlipped)
-                    {
-                        m_IsFlipped = isLeft;
-                        m_Sprite.flipX = m_IsFlipped;
-                    }
-                }
+                HandleFlipping();
                 break;
             case State.Falling:
-                if (Mathf.Abs(m_Movement) > 0.01f)
-                {
-                    bool isLeft = Mathf.Sign(m_Movement) < 0f;
-                    if (isLeft != m_IsFlipped)
-                    {
-                        m_IsFlipped = isLeft;
-                        m_Sprite.flipX = m_IsFlipped;
-                    }
-                }
+                HandleFlipping();
                 if (m_RB.velocity.y < -m_MaxFallSpeed)
                 {
                     m_RB.velocity = new Vector2(m_RB.velocity.x, -m_MaxFallSpeed);
                 }
                 break;
+            case State.Damaged:
+
+                break;
             case State.Stunned:
+                break;
+            case State.Dead:
                 break;
             case State.None:
                 Debug.LogError("Invalided player state!");
@@ -224,6 +214,26 @@ public class Player : MonoBehaviour
         m_RB.velocity = new Vector2(m_Movespeed * m_Movement, m_RB.velocity.y);
     }
 
+    public void TakeDamage(int damage)
+    {
+        if (m_CurrentState == State.Dead) return;
+
+        m_Health -= damage;
+        m_RB.velocity = Vector2.zero;
+
+        if (m_Health <= 0)
+        {
+            m_CurrentState = State.Dead;
+            Debug.Log("Player died...");
+            m_Health = 0;
+        }
+        else
+        {
+            m_CurrentState = State.Damaged;
+            m_Animator.Play(k_DamagedAnimStateId);
+        }
+    }
+
     public void SetMovementInput(float input)
     {
         m_MovementInput = input;
@@ -242,6 +252,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void StopJumping()
+    {
+        m_JumpInput = false;
+    }
+
     private void Jump()
     {
         m_JumpInput = true;
@@ -254,9 +269,31 @@ public class Player : MonoBehaviour
         m_JumpTimer.Start(m_MinJumpTime);
     }
 
-    public void StopJumping()
+    private void Land()
     {
-        m_JumpInput = false;
+        m_RB.gravityScale = m_GravityMultiplier;
+        m_CurrentState = State.Idle;
+        m_Animator.Play(k_IdleAnimStateId);
+    }
+
+    private void StartFalling()
+    {
+        m_RB.gravityScale = m_GravityMultiplierWhenFalling;
+        m_CurrentState = State.Falling;
+        m_Animator.Play(k_FallAnimStateId);
+    }
+
+    private void HandleFlipping()
+    {
+        if (Mathf.Abs(m_Movement) > 0.01f)
+        {
+            bool isLeft = Mathf.Sign(m_Movement) < 0f;
+            if (isLeft != m_IsFlipped)
+            {
+                m_IsFlipped = isLeft;
+                m_Sprite.flipX = m_IsFlipped;
+            }
+        }
     }
 
     private void UpdateGroundedState()
