@@ -1,13 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class PlayerHealth : MonoBehaviour
+public class EnemyHealth : MonoBehaviour
 {
     public float health;
     public float maxHealth;
-    public Image healthBar;
 
     void Start()
     {
@@ -16,14 +14,14 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
-        healthBar.fillAmount = Mathf.Clamp(health / maxHealth, 0, 1);
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            health -= 17;
+            health -= 5;
             //Destroy(gameObject);
         }
     }
