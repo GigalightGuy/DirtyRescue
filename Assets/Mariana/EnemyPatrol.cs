@@ -18,26 +18,40 @@ public class EnemyPatrol : MonoBehaviour
 
     void Update()
     {
+        Patrol();
+    }
+
+    void Patrol()
+    {
         Vector2 point = currentPoint.position - transform.position;
 
         if (currentPoint == pointB.transform)
         {
-            rb.velocity = new Vector2(speed, 0);
+            rb.velocity = new Vector2(speed, 0f);
         }
         else
         {
-            rb.velocity = new Vector2(-speed, 0);
+            rb.velocity = new Vector2(-speed, 0f);
         }
 
         if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == pointB.transform)
         {
+            Flip();
             currentPoint = pointA.transform;
         }
 
         if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == pointA.transform)
         {
+            Flip();
             currentPoint = pointB.transform;
         }
+    }
+
+    private void Flip()
+    {
+        Vector3 localScale = transform.localScale;
+        localScale.x *= -1;
+        transform.localScale = localScale;
     }
 
     private void OnDrawGizmos()

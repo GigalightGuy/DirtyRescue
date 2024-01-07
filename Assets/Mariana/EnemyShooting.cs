@@ -10,15 +10,19 @@ public class EnemyShooting : MonoBehaviour
     private float timer;
     private GameObject player;
 
+    public Animator anim;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        anim = GetComponent<Animator>();
     }
 
     void Update()
     {
         float distance = Vector2.Distance(transform.position, player.transform.position);
         Debug.Log(distance);
+        anim.SetBool("IsAttacking", false);
 
         if (distance < 10)
         {
@@ -27,7 +31,7 @@ public class EnemyShooting : MonoBehaviour
             if (timer > 2)
             {
                 timer = 0;
-                Shoot();
+                anim.SetBool("IsAttacking", true);
             }
         }
     }
