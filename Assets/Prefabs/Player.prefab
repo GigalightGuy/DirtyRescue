@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Damage: 1
   m_GroundedLayerMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 63
 --- !u!114 &5369407511186979845
 MonoBehaviour:
   m_ObjectHideFlags: 0
