@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Pedro_JumpPlayground.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 0cf72bc965a9d4149bcf52e38d60658e
+  - enabled: 1
+    path: Assets/Scenes/jinn.unity
+    guid: 913c01e40420837489a71c61b40678ef
   m_configObjects: {}
