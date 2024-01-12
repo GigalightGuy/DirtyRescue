@@ -49,7 +49,7 @@ public class Player : MonoBehaviour, IDamageable
     private bool m_IsGrounded = false;
 
     private float m_MovementInput = 0f;
-    public float m_Movement = 0f;
+    private float m_Movement = 0f;
 
     private bool m_JumpInput = false;
 
@@ -66,7 +66,9 @@ public class Player : MonoBehaviour, IDamageable
 
     private State m_CurrentState = State.Idle;
 
-    public int m_Health;
+    private int m_Health;
+
+    public int Health => m_Health;
 
     private void Awake()
     {
