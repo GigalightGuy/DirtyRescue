@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class TrapPetrolOil : MonoBehaviour
 {
-    public bool onFire;
-    public float timer;
-    public bool isIn = false;
+    [SerializeField] private Player _player;
+    [SerializeField] private bool onFire;
+    [SerializeField] private float timer;
+    [SerializeField] private bool isIn = false;
 
     private void Start()
     {
@@ -24,7 +25,7 @@ public class TrapPetrolOil : MonoBehaviour
                 timer += Time.deltaTime;
                 if (timer > 2f)
                 {
-                    Debug.Log("Continuous vida -1");
+                    _player.TakeDamage(1);
                     timer = 0;
                 }
             }
@@ -39,14 +40,14 @@ public class TrapPetrolOil : MonoBehaviour
     {
         if (onFire == true && collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("vida -1");
+            _player.TakeDamage(1);
+            Debug.Log("took 1 damage");
             isIn = true;           
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("has exited");
         isIn = false;
         timer = 0;
     }

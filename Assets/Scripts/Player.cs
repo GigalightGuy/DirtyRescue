@@ -35,7 +35,7 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] private float m_MaxFallSpeed = 15f;
 
     [Header("Combat stats")]
-    [SerializeField] private int m_MaxHealth = 3;
+    [SerializeField] private int m_MaxHealth = 6;
     [SerializeField] private int m_Damage = 1;
 
     [Space]
@@ -49,7 +49,7 @@ public class Player : MonoBehaviour, IDamageable
     private bool m_IsGrounded = false;
 
     private float m_MovementInput = 0f;
-    private float m_Movement = 0f;
+    public float m_Movement = 0f;
 
     private bool m_JumpInput = false;
 
@@ -66,7 +66,7 @@ public class Player : MonoBehaviour, IDamageable
 
     private State m_CurrentState = State.Idle;
 
-    private int m_Health;
+    public int m_Health;
 
     private void Awake()
     {

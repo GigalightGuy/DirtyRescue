@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class TrapGlassShard : MonoBehaviour
 {
+    [SerializeField] private Player _player;
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("vida-1");
+            _player.TakeDamage(1);
+            Debug.Log("took 1 damage");
         }
     }
 }
