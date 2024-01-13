@@ -525,7 +525,7 @@ GameObject:
   - component: {fileID: 47254273}
   - component: {fileID: 47254272}
   - component: {fileID: 47254271}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GlassShard (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -559,7 +559,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ca466398be51a4b82a8ad9d18cf12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
 --- !u!61 &47254272
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -799,7 +798,7 @@ GameObject:
   - component: {fileID: 74304506}
   - component: {fileID: 74304505}
   - component: {fileID: 74304504}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GlassShard (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -833,7 +832,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ca466398be51a4b82a8ad9d18cf12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
 --- !u!61 &74304505
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -943,7 +941,7 @@ GameObject:
   - component: {fileID: 107401853}
   - component: {fileID: 107401852}
   - component: {fileID: 107401851}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Fishnet (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1216,7 +1214,7 @@ GameObject:
   - component: {fileID: 113964311}
   - component: {fileID: 113964310}
   - component: {fileID: 113964309}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GlassShard (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1250,7 +1248,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ca466398be51a4b82a8ad9d18cf12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
 --- !u!61 &113964310
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1360,7 +1357,7 @@ GameObject:
   - component: {fileID: 115549702}
   - component: {fileID: 115549701}
   - component: {fileID: 115549700}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GlassShard (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1394,7 +1391,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ca466398be51a4b82a8ad9d18cf12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
 --- !u!61 &115549701
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1631,7 +1627,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 128619089}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Traps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1668,7 +1664,7 @@ GameObject:
   - component: {fileID: 192664941}
   - component: {fileID: 192664940}
   - component: {fileID: 192664939}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Fishnet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1811,7 +1807,7 @@ GameObject:
   - component: {fileID: 206886820}
   - component: {fileID: 206886819}
   - component: {fileID: 206886818}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: PetrolOil (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1845,7 +1841,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e699c83940ebac4e86ff6a4c62129b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
   onFire: 0
   timer: 0
   isIn: 0
@@ -1958,7 +1953,7 @@ GameObject:
   - component: {fileID: 230103761}
   - component: {fileID: 230103760}
   - component: {fileID: 230103759}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GlassShard (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1992,7 +1987,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ca466398be51a4b82a8ad9d18cf12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
 --- !u!61 &230103760
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2102,7 +2096,7 @@ GameObject:
   - component: {fileID: 235986025}
   - component: {fileID: 235986024}
   - component: {fileID: 235986023}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GlassShard (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2136,7 +2130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ca466398be51a4b82a8ad9d18cf12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
 --- !u!61 &235986024
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2373,7 +2366,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 280955063}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GlassTraps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2431,7 +2424,7 @@ GameObject:
   - component: {fileID: 298245157}
   - component: {fileID: 298245156}
   - component: {fileID: 298245155}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GlassShard (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2465,7 +2458,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ca466398be51a4b82a8ad9d18cf12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
 --- !u!61 &298245156
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3026,7 +3018,7 @@ GameObject:
   - component: {fileID: 395675367}
   - component: {fileID: 395675366}
   - component: {fileID: 395675365}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Fishnet (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3169,7 +3161,7 @@ GameObject:
   - component: {fileID: 405782152}
   - component: {fileID: 405782151}
   - component: {fileID: 405782150}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GlassShard (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3203,7 +3195,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ca466398be51a4b82a8ad9d18cf12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
 --- !u!61 &405782151
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3443,7 +3434,7 @@ GameObject:
   - component: {fileID: 457882122}
   - component: {fileID: 457882121}
   - component: {fileID: 457882120}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GlassShard (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3477,7 +3468,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ca466398be51a4b82a8ad9d18cf12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
 --- !u!61 &457882121
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3847,7 +3837,7 @@ GameObject:
   - component: {fileID: 508305579}
   - component: {fileID: 508305578}
   - component: {fileID: 508305577}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Fishnet (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4538,7 +4528,7 @@ GameObject:
   - component: {fileID: 627842287}
   - component: {fileID: 627842286}
   - component: {fileID: 627842285}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GlassShard (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4572,7 +4562,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ca466398be51a4b82a8ad9d18cf12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
 --- !u!61 &627842286
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4942,7 +4931,7 @@ GameObject:
   - component: {fileID: 676544723}
   - component: {fileID: 676544722}
   - component: {fileID: 676544721}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: PetrolOil (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4976,7 +4965,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e699c83940ebac4e86ff6a4c62129b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
   onFire: 0
   timer: 0
   isIn: 0
@@ -5089,7 +5077,7 @@ GameObject:
   - component: {fileID: 688926294}
   - component: {fileID: 688926293}
   - component: {fileID: 688926292}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GlassShard (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5123,7 +5111,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ca466398be51a4b82a8ad9d18cf12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
 --- !u!61 &688926293
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5753,7 +5740,7 @@ GameObject:
   - component: {fileID: 769430292}
   - component: {fileID: 769430291}
   - component: {fileID: 769430290}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Fishnet (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5896,7 +5883,7 @@ GameObject:
   - component: {fileID: 773989667}
   - component: {fileID: 773989666}
   - component: {fileID: 773989665}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GlassShard (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5930,7 +5917,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ca466398be51a4b82a8ad9d18cf12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
 --- !u!61 &773989666
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6170,7 +6156,7 @@ GameObject:
   - component: {fileID: 789236377}
   - component: {fileID: 789236376}
   - component: {fileID: 789236375}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GlassShard (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6204,7 +6190,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ca466398be51a4b82a8ad9d18cf12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
 --- !u!61 &789236376
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6574,7 +6559,7 @@ GameObject:
   - component: {fileID: 809904557}
   - component: {fileID: 809904556}
   - component: {fileID: 809904555}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GlassShard (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6608,7 +6593,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ca466398be51a4b82a8ad9d18cf12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
 --- !u!61 &809904556
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6718,7 +6702,7 @@ GameObject:
   - component: {fileID: 811323658}
   - component: {fileID: 811323657}
   - component: {fileID: 811323656}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Fishnet (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7121,7 +7105,7 @@ GameObject:
   - component: {fileID: 857663097}
   - component: {fileID: 857663096}
   - component: {fileID: 857663095}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GlassShard (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7155,7 +7139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ca466398be51a4b82a8ad9d18cf12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
 --- !u!61 &857663096
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7525,7 +7508,7 @@ GameObject:
   - component: {fileID: 933138024}
   - component: {fileID: 933138023}
   - component: {fileID: 933138022}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: PetrolOil (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7559,7 +7542,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e699c83940ebac4e86ff6a4c62129b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
   onFire: 0
   timer: 0
   isIn: 0
@@ -7932,7 +7914,7 @@ GameObject:
   - component: {fileID: 950416565}
   - component: {fileID: 950416564}
   - component: {fileID: 950416563}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: PetrolOil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7951,7 +7933,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e699c83940ebac4e86ff6a4c62129b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
   onFire: 0
   timer: 0
   isIn: 0
@@ -8209,7 +8190,7 @@ GameObject:
   - component: {fileID: 1011370635}
   - component: {fileID: 1011370634}
   - component: {fileID: 1011370633}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: PetrolOil (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8243,7 +8224,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e699c83940ebac4e86ff6a4c62129b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
   onFire: 0
   timer: 0
   isIn: 0
@@ -8746,7 +8726,7 @@ GameObject:
   - component: {fileID: 1043577825}
   - component: {fileID: 1043577824}
   - component: {fileID: 1043577823}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: PetrolOil (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8780,7 +8760,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e699c83940ebac4e86ff6a4c62129b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
   onFire: 0
   timer: 0
   isIn: 0
@@ -9023,7 +9002,7 @@ GameObject:
   - component: {fileID: 1077611101}
   - component: {fileID: 1077611100}
   - component: {fileID: 1077611099}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Fishnet (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9426,7 +9405,7 @@ GameObject:
   - component: {fileID: 1087492850}
   - component: {fileID: 1087492849}
   - component: {fileID: 1087492848}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: PetrolOil (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9460,7 +9439,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e699c83940ebac4e86ff6a4c62129b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
   onFire: 0
   timer: 0
   isIn: 0
@@ -9703,7 +9681,7 @@ GameObject:
   - component: {fileID: 1111151534}
   - component: {fileID: 1111151533}
   - component: {fileID: 1111151532}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GlassShard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9722,7 +9700,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ca466398be51a4b82a8ad9d18cf12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
 --- !u!61 &1111151533
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10237,7 +10214,7 @@ GameObject:
   - component: {fileID: 1171178665}
   - component: {fileID: 1171178664}
   - component: {fileID: 1171178663}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Fishnet (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11030,7 +11007,7 @@ GameObject:
   - component: {fileID: 1249490453}
   - component: {fileID: 1249490452}
   - component: {fileID: 1249490451}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GlassShard (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11064,7 +11041,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ca466398be51a4b82a8ad9d18cf12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
 --- !u!61 &1249490452
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11564,7 +11540,7 @@ GameObject:
   - component: {fileID: 1310281928}
   - component: {fileID: 1310281927}
   - component: {fileID: 1310281926}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GlassShard (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11598,7 +11574,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ca466398be51a4b82a8ad9d18cf12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
 --- !u!61 &1310281927
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11708,7 +11683,7 @@ GameObject:
   - component: {fileID: 1323354480}
   - component: {fileID: 1323354479}
   - component: {fileID: 1323354478}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Fishnet (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12111,7 +12086,7 @@ GameObject:
   - component: {fileID: 1389044189}
   - component: {fileID: 1389044188}
   - component: {fileID: 1389044187}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GlassShard (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12145,7 +12120,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ca466398be51a4b82a8ad9d18cf12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
 --- !u!61 &1389044188
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12515,7 +12489,7 @@ GameObject:
   - component: {fileID: 1417389420}
   - component: {fileID: 1417389419}
   - component: {fileID: 1417389418}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Fishnet (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12658,7 +12632,7 @@ GameObject:
   - component: {fileID: 1426589413}
   - component: {fileID: 1426589412}
   - component: {fileID: 1426589411}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GlassShard (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12692,7 +12666,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ca466398be51a4b82a8ad9d18cf12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
 --- !u!61 &1426589412
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12802,7 +12775,7 @@ GameObject:
   - component: {fileID: 1433519378}
   - component: {fileID: 1433519377}
   - component: {fileID: 1433519376}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Fishnet (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12945,7 +12918,7 @@ GameObject:
   - component: {fileID: 1452374057}
   - component: {fileID: 1452374056}
   - component: {fileID: 1452374055}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Fishnet (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13348,7 +13321,7 @@ GameObject:
   - component: {fileID: 1524154579}
   - component: {fileID: 1524154578}
   - component: {fileID: 1524154577}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: PetrolOil (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13382,7 +13355,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e699c83940ebac4e86ff6a4c62129b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
   onFire: 0
   timer: 0
   isIn: 0
@@ -13724,7 +13696,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1587073811}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FishnetTraps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13771,7 +13743,7 @@ GameObject:
   - component: {fileID: 1619705903}
   - component: {fileID: 1619705902}
   - component: {fileID: 1619705901}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GlassShard (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13805,7 +13777,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ca466398be51a4b82a8ad9d18cf12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
 --- !u!61 &1619705902
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14175,7 +14146,7 @@ GameObject:
   - component: {fileID: 1631201299}
   - component: {fileID: 1631201298}
   - component: {fileID: 1631201297}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: PetrolOil (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14209,7 +14180,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e699c83940ebac4e86ff6a4c62129b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
   onFire: 0
   timer: 0
   isIn: 0
@@ -15133,7 +15103,7 @@ GameObject:
   - component: {fileID: 1740913664}
   - component: {fileID: 1740913663}
   - component: {fileID: 1740913662}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GlassShard (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15167,7 +15137,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ca466398be51a4b82a8ad9d18cf12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
 --- !u!61 &1740913663
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15407,7 +15376,7 @@ GameObject:
   - component: {fileID: 1753833061}
   - component: {fileID: 1753833060}
   - component: {fileID: 1753833059}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GlassShard (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15441,7 +15410,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ca466398be51a4b82a8ad9d18cf12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
 --- !u!61 &1753833060
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15551,7 +15519,7 @@ GameObject:
   - component: {fileID: 1760680879}
   - component: {fileID: 1760680878}
   - component: {fileID: 1760680877}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GlassShard (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15585,7 +15553,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ca466398be51a4b82a8ad9d18cf12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
 --- !u!61 &1760680878
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16082,7 +16049,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1777869372}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PetrolTraps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16244,7 +16211,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1829620842}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TrapPetrol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16549,7 +16516,7 @@ GameObject:
   - component: {fileID: 1889263791}
   - component: {fileID: 1889263790}
   - component: {fileID: 1889263789}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: PetrolOil (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16583,7 +16550,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e699c83940ebac4e86ff6a4c62129b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
   onFire: 0
   timer: 0
   isIn: 0
@@ -17721,7 +17687,7 @@ GameObject:
   - component: {fileID: 2039903518}
   - component: {fileID: 2039903517}
   - component: {fileID: 2039903516}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: PetrolOil (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17755,7 +17721,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e699c83940ebac4e86ff6a4c62129b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
   onFire: 0
   timer: 0
   isIn: 0
@@ -18334,7 +18299,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cb5faef4471d944ab1c73d025d4714a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
   _healthBar: {fileID: 2114884397}
 --- !u!1 &2124758995
 GameObject:
@@ -18348,7 +18312,7 @@ GameObject:
   - component: {fileID: 2124758999}
   - component: {fileID: 2124758998}
   - component: {fileID: 2124758997}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Fishnet (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
