@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TrapPetrolOil : MonoBehaviour
 {
-    [SerializeField] private Player _player;
     [SerializeField] private bool onFire;
     [SerializeField] private float timer;
     [SerializeField] private bool isIn = false;
@@ -25,7 +24,7 @@ public class TrapPetrolOil : MonoBehaviour
                 timer += Time.deltaTime;
                 if (timer > 2f)
                 {
-                    _player.TakeDamage(1);
+                    Player.Instance.TakeDamage(1);
                     timer = 0;
                 }
             }
@@ -40,7 +39,7 @@ public class TrapPetrolOil : MonoBehaviour
     {
         if (onFire == true && collision.gameObject.CompareTag("Player"))
         {
-            _player.TakeDamage(1);
+            Player.Instance.TakeDamage(1);
             Debug.Log("took 1 damage");
             isIn = true;           
         }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TrapFishnet : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("movement=0");
     }
