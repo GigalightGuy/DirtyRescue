@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class LevelManager : MonoBehaviour
 {
@@ -29,6 +30,8 @@ public class LevelManager : MonoBehaviour
 
         var playerCameraGO = Instantiate(m_PlayerCameraPrefab, m_PlayerSpawnPoint.position, Quaternion.identity);
         var player = playerCameraGO.GetComponentInChildren<Player>();
+
+        m_FullscreenMaskMat.SetFloat("_ScreenRatio", 1f / (Screen.height / (float)Screen.width));
 
         player.PlayerDead += OnPlayerDead;
 

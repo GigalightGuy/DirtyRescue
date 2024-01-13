@@ -11,6 +11,7 @@ public class Player : MonoBehaviour, IDamageable
         Jumping,
         Falling,
         Damaged,
+        Rooted,
         Stunned,
         Dead
     }
@@ -66,6 +67,8 @@ public class Player : MonoBehaviour, IDamageable
     private bool m_JumpInQueue = false;
 
     private bool m_IsFlipped;
+
+    private Timer m_RootedTimer;
 
     private State m_CurrentState = State.Idle;
 
@@ -179,6 +182,12 @@ public class Player : MonoBehaviour, IDamageable
             case State.Damaged:
                 m_CurrentState = State.Falling;
                 break;
+            case State.Rooted:
+                if (m_RootedTimer.HasEnded())
+                {
+                    Land();
+                }
+                break;
             case State.Stunned:
                 break;
             case State.Dead:
@@ -206,9 +215,10 @@ public class Player : MonoBehaviour, IDamageable
                 }
                 break;
             case State.Damaged:
-
                 break;
             case State.Stunned:
+                break;
+            case State.Rooted:
                 break;
             case State.Dead:
                 break;
@@ -249,6 +259,12 @@ public class Player : MonoBehaviour, IDamageable
             m_CurrentState = State.Damaged;
             m_Animator.Play(k_DamagedAnimStateId);
         }
+    }
+
+    public void Root(float duration)
+    {
+        m_RootedTimer.Start(duration);
+        m_CurrentState = State.Rooted;
     }
 
     public void SetMovementInput(float input)
