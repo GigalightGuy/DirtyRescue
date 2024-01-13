@@ -70,6 +70,9 @@ public class Player : MonoBehaviour, IDamageable
 
     public int Health => m_Health;
 
+    public delegate void PlayerDeadDelegate();
+    public event PlayerDeadDelegate PlayerDead;
+
     private void Awake()
     {
         m_Animator = GetComponent<Animator>();
@@ -95,6 +98,7 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Update()
     {
+        // DEBUG
         if (Input.GetKeyDown(KeyCode.K))
         {
             TakeDamage(1);
@@ -226,7 +230,7 @@ public class Player : MonoBehaviour, IDamageable
         if (m_Health <= 0)
         {
             m_CurrentState = State.Dead;
-            Debug.Log("Player died...");
+            PlayerDead?.Invoke();
             m_Health = 0;
         }
         else
