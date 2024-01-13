@@ -5,13 +5,12 @@ using UnityEngine.UI;
 
 public class HealthBarControl : MonoBehaviour
 {
-    [SerializeField] private Player _player;
     [SerializeField] private Image _healthBar;
 
     // Update is called once per frame
     void Update()
     {
-        int playerHealth = _player.Health;
+        int playerHealth = Player.Instance.Health;
         if (playerHealth == 6)
         {
             _healthBar.fillAmount = 1f;
