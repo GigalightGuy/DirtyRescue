@@ -201,14 +201,18 @@ public class Player : MonoBehaviour, IDamageable
         switch (m_CurrentState)
         {
             case State.Idle:
+                HandleMovement();
                 break;
             case State.Running:
+                HandleMovement();
                 HandleFlipping();
                 break;
             case State.Jumping:
+                HandleMovement();
                 HandleFlipping();
                 break;
             case State.Falling:
+                HandleMovement();
                 HandleFlipping();
                 if (m_RB.velocity.y < -m_MaxFallSpeed)
                 {
@@ -227,19 +231,6 @@ public class Player : MonoBehaviour, IDamageable
                 Debug.LogError("Invalided player state!");
                 break;
         }
-
-        Mathf.Sign(m_MovementInput);
-        if (Mathf.Abs(m_Movement - m_MovementInput) > 0.01f)
-        {
-            float diff = m_MovementInput - m_Movement;
-            m_Movement += Mathf.Min(diff, Mathf.Sign(diff) * (1f / m_RampUpTime) * Time.fixedDeltaTime);
-        }
-        else
-        {
-            m_Movement = m_MovementInput;
-        }
-
-        m_RB.velocity = new Vector2(m_Movespeed * m_Movement, m_RB.velocity.y);
     }
 
     public void TakeDamage(int damage)
@@ -289,6 +280,22 @@ public class Player : MonoBehaviour, IDamageable
     public void StopJumping()
     {
         m_JumpInput = false;
+    }
+
+    private void HandleMovement()
+    {
+        Mathf.Sign(m_MovementInput);
+        if (Mathf.Abs(m_Movement - m_MovementInput) > 0.01f)
+        {
+            float diff = m_MovementInput - m_Movement;
+            m_Movement += Mathf.Min(diff, Mathf.Sign(diff) * (1f / m_RampUpTime) * Time.fixedDeltaTime);
+        }
+        else
+        {
+            m_Movement = m_MovementInput;
+        }
+
+        m_RB.velocity = new Vector2(m_Movespeed * m_Movement, m_RB.velocity.y);
     }
 
     private void Jump()
