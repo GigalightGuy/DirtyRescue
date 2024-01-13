@@ -98,6 +98,7 @@ public class Player : MonoBehaviour, IDamageable
         m_JumpTimer = new Timer();
         m_CoyoteTimer = new Timer();
         m_JumpBufferTimer = new Timer();
+        m_RootedTimer = new Timer();
 
         // Calculate jump initial velocity from max jump height
         float g = Physics2D.gravity.y * m_GravityMultiplier;
