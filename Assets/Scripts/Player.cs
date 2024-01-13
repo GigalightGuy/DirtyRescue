@@ -21,6 +21,9 @@ public class Player : MonoBehaviour, IDamageable
     private static readonly int k_FallAnimStateId = Animator.StringToHash("Fall");
     private static readonly int k_DamagedAnimStateId = Animator.StringToHash("Damaged");
 
+    private static Player s_Instance;
+    public static Player Instance => s_Instance;
+
     [Header("Movement")]
     [SerializeField] private float m_Movespeed = 5f;
     [SerializeField] private float m_RampUpTime = 0.5f;
@@ -75,6 +78,14 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Awake()
     {
+        if (s_Instance)
+        {
+            Debug.LogError("Can't have 2 players spawned at the same time");
+            Destroy(gameObject);
+            return;
+        }
+        s_Instance = this;
+
         m_Animator = GetComponent<Animator>();
         m_Sprite = GetComponent<SpriteRenderer>();
 
