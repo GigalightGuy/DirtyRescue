@@ -26,8 +26,11 @@ public class Player : MonoBehaviour, IDamageable
     public static Player Instance => s_Instance;
 
     [Header("Movement")]
-    [SerializeField] private float m_Movespeed = 5f;
-    [SerializeField] private float m_RampUpTime = 0.5f;
+    [SerializeField] private float m_MoveSpeed = 5f;
+    [SerializeField] private float m_Acceleration = 5f;
+    [SerializeField] private float m_Deceleration = 7f;
+    [SerializeField] private float m_AccelerationExponent = 1f;
+    [SerializeField] private float m_BrakeForce = 0.2f;
 
     [Header("Jump Settings")]
     [SerializeField] private float m_MinJumpHeight = 1f;
@@ -52,7 +55,7 @@ public class Player : MonoBehaviour, IDamageable
 
     private bool m_IsGrounded = false;
 
-    private float m_MovementInput = 0f;
+    private float m_MoveInput = 0f;
     private float m_Movement = 0f;
 
     private bool m_JumpInput = false;
@@ -65,8 +68,6 @@ public class Player : MonoBehaviour, IDamageable
 
     private Timer m_JumpBufferTimer;
     private bool m_JumpInQueue = false;
-
-    private bool m_IsFlipped;
 
     private Timer m_RootedTimer;
 
@@ -142,7 +143,7 @@ public class Player : MonoBehaviour, IDamageable
                     m_CoyoteTimer.Start(m_CoyoteTime);
                     StartFalling();
                 }
-                else if (Mathf.Abs(m_Movement) > 0.01f)
+                else if (Mathf.Abs(m_MoveInput) > 0.01f)
                 {
                     m_CurrentState = State.Running;
                     m_Animator.Play(k_RunAnimStateId);
@@ -154,7 +155,7 @@ public class Player : MonoBehaviour, IDamageable
                     m_CoyoteTimer.Start(m_CoyoteTime);
                     StartFalling();
                 }
-                else if (Mathf.Abs(m_Movement) < 0.01f)
+                else if (Mathf.Abs(m_MoveInput) < 0.01f)
                 {
                     m_CurrentState = State.Idle;
                     m_Animator.Play(k_IdleAnimStateId);
@@ -261,7 +262,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void SetMovementInput(float input)
     {
-        m_MovementInput = input;
+        m_MoveInput = input;
     }
 
     public void StartJumping()
@@ -284,18 +285,20 @@ public class Player : MonoBehaviour, IDamageable
 
     private void HandleMovement()
     {
-        Mathf.Sign(m_MovementInput);
-        if (Mathf.Abs(m_Movement - m_MovementInput) > 0.01f)
-        {
-            float diff = m_MovementInput - m_Movement;
-            m_Movement += Mathf.Min(diff, Mathf.Sign(diff) * (1f / m_RampUpTime) * Time.fixedDeltaTime);
-        }
-        else
-        {
-            m_Movement = m_MovementInput;
-        }
+        float desiredVel = m_MoveInput * m_MoveSpeed;
+        float velDiff = desiredVel - m_RB.velocity.x;
+        float accel = (Mathf.Abs(desiredVel) > 0.01f) ? m_Acceleration : m_Deceleration;
+        float force = Mathf.Pow(Mathf.Abs(velDiff) * accel, m_AccelerationExponent) * Mathf.Sign(velDiff);
 
-        m_RB.velocity = new Vector2(m_Movespeed * m_Movement, m_RB.velocity.y);
+        m_RB.AddForce(force * Vector2.right);
+
+        if (m_IsGrounded && Mathf.Abs(m_MoveInput) < 0.01f)
+        {
+            float vel = m_RB.velocity.x;
+            float brakeAmount = Mathf.Min(Mathf.Abs(vel), m_BrakeForce);
+            brakeAmount *= -Mathf.Sign(vel);
+            m_RB.AddForce(brakeAmount * Vector2.right, ForceMode2D.Impulse);
+        }
     }
 
     private void Jump()
@@ -326,13 +329,13 @@ public class Player : MonoBehaviour, IDamageable
 
     private void HandleFlipping()
     {
-        if (Mathf.Abs(m_Movement) > 0.01f)
+        float velocity = m_RB.velocity.x;
+        if (Mathf.Abs(velocity) > 0.01f)
         {
-            bool isLeft = Mathf.Sign(m_Movement) < 0f;
-            if (isLeft != m_IsFlipped)
+            bool isLeft = velocity < 0f;
+            if (isLeft != m_Sprite.flipX)
             {
-                m_IsFlipped = isLeft;
-                m_Sprite.flipX = m_IsFlipped;
+                m_Sprite.flipX = isLeft;
             }
         }
     }

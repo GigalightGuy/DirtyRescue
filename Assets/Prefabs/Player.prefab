@@ -222,7 +222,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 3025378900213187932}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 9740b4be416fb2b4bb355aeda3994861, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -272,8 +272,8 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &3815611014048257657
 MonoBehaviour:
@@ -287,9 +287,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22235c7d82acb964cbd0a59ec3c5ffbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Movespeed: 7
-  m_RampUpTime: 0.05
-  m_MinJumpHeight: 0.75
+  m_MoveSpeed: 10
+  m_Acceleration: 7
+  m_Deceleration: 7
+  m_AccelerationExponent: 0.9
+  m_BrakeForce: 0.2
+  m_MinJumpHeight: 1.25
   m_MaxJumpHeight: 2.5
   m_GravityMultiplier: 2
   m_GravityMultiplierWhenFalling: 4
