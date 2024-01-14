@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 
 public class LevelManager : MonoBehaviour
 {
@@ -9,7 +8,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Transform m_PlayerSpawnPoint;
 
     [SerializeField] private Material m_FullscreenMaskMat;
+    [SerializeField] private float m_StartEffectDuration = 1.5f;
     [SerializeField] private AnimationCurve m_LevelStartEffectAnimCurve;
+    [SerializeField] private float m_EndEffectDuration = 3.0f;
     [SerializeField] private AnimationCurve m_LevelEndEffectAnimCurve;
 
     private int m_RecyclingScore = 0;
@@ -31,7 +32,7 @@ public class LevelManager : MonoBehaviour
         var playerCameraGO = Instantiate(m_PlayerCameraPrefab, m_PlayerSpawnPoint.position, Quaternion.identity);
         var player = playerCameraGO.GetComponentInChildren<Player>();
 
-        m_FullscreenMaskMat.SetFloat("_ScreenRatio", 1f / (Screen.height / (float)Screen.width));
+        m_FullscreenMaskMat.SetFloat(k_ScreenRatioPropId, 1f / (Screen.height / (float)Screen.width));
 
         player.PlayerDead += OnPlayerDead;
 
@@ -47,16 +48,16 @@ public class LevelManager : MonoBehaviour
     {
         float initialScale = 0.01f;
         float timer = 0f;
-        m_FullscreenMaskMat.SetFloat("_UVScale", initialScale);
+        m_FullscreenMaskMat.SetFloat(k_UVScalePropId, initialScale);
 
-        while (timer < 1f)
+        while (timer < m_EndEffectDuration)
         {
             yield return null;
 
             timer += Time.deltaTime;
-            timer = Mathf.Clamp01(timer);
-            float scale = Mathf.Lerp(initialScale, 500f, m_LevelEndEffectAnimCurve.Evaluate(timer));
-            m_FullscreenMaskMat.SetFloat("_UVScale", scale);
+            float t = Mathf.Clamp01(timer / m_EndEffectDuration);
+            float scale = Mathf.Lerp(initialScale, 500f, m_LevelEndEffectAnimCurve.Evaluate(t));
+            m_FullscreenMaskMat.SetFloat(k_UVScalePropId, scale);
         }
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -66,16 +67,21 @@ public class LevelManager : MonoBehaviour
     {
         float initialScale = 500f;
         float timer = 0f;
-        m_FullscreenMaskMat.SetFloat("_UVScale", initialScale);
+        m_FullscreenMaskMat.SetFloat(k_UVScalePropId, initialScale);
 
-        while (timer < 1f)
+        while (timer < m_StartEffectDuration)
         {
             yield return null;
 
             timer += Time.deltaTime;
-            timer = Mathf.Clamp01(timer);
-            float scale = Mathf.Lerp(initialScale, 0.01f, m_LevelStartEffectAnimCurve.Evaluate(timer));
-            m_FullscreenMaskMat.SetFloat("_UVScale", scale);
+            float t = Mathf.Clamp01(timer / m_StartEffectDuration);
+            float scale = Mathf.Lerp(initialScale, 0.01f, m_LevelStartEffectAnimCurve.Evaluate(t));
+            m_FullscreenMaskMat.SetFloat(k_UVScalePropId, scale);
         }
     }
+
+    #region Material Properties Ids
+    private static readonly int k_ScreenRatioPropId = Shader.PropertyToID("_ScreenRatio");
+    private static readonly int k_UVScalePropId = Shader.PropertyToID("_UVScale");
+    #endregion
 }

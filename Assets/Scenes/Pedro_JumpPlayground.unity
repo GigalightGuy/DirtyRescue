@@ -154,7 +154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e699c83940ebac4e86ff6a4c62129b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
   onFire: 0
   timer: 0
   isIn: 0
@@ -2091,6 +2090,86 @@ PrefabInstance:
       propertyPath: m_PlayerSpawnPoint
       value: 
       objectReference: {fileID: 831168408}
+    - target: {fileID: 6733180756420920224, guid: 5c736c67428924646b925499ac8d6879, type: 3}
+      propertyPath: m_EndEffectDuration
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6733180756420920224, guid: 5c736c67428924646b925499ac8d6879, type: 3}
+      propertyPath: m_LevelEndEffectAnimCurve.m_Curve.Array.data[1].time
+      value: 0.20001632
+      objectReference: {fileID: 0}
+    - target: {fileID: 6733180756420920224, guid: 5c736c67428924646b925499ac8d6879, type: 3}
+      propertyPath: m_LevelEndEffectAnimCurve.m_Curve.Array.data[2].time
+      value: 0.9009552
+      objectReference: {fileID: 0}
+    - target: {fileID: 6733180756420920224, guid: 5c736c67428924646b925499ac8d6879, type: 3}
+      propertyPath: m_LevelEndEffectAnimCurve.m_Curve.Array.data[3].time
+      value: 0.93750596
+      objectReference: {fileID: 0}
+    - target: {fileID: 6733180756420920224, guid: 5c736c67428924646b925499ac8d6879, type: 3}
+      propertyPath: m_LevelEndEffectAnimCurve.m_Curve.Array.data[1].value
+      value: -0.00023504347
+      objectReference: {fileID: 0}
+    - target: {fileID: 6733180756420920224, guid: 5c736c67428924646b925499ac8d6879, type: 3}
+      propertyPath: m_LevelEndEffectAnimCurve.m_Curve.Array.data[2].value
+      value: 0.6010893
+      objectReference: {fileID: 0}
+    - target: {fileID: 6733180756420920224, guid: 5c736c67428924646b925499ac8d6879, type: 3}
+      propertyPath: m_LevelEndEffectAnimCurve.m_Curve.Array.data[3].value
+      value: 0.9658231
+      objectReference: {fileID: 0}
+    - target: {fileID: 6733180756420920224, guid: 5c736c67428924646b925499ac8d6879, type: 3}
+      propertyPath: m_LevelEndEffectAnimCurve.m_Curve.Array.data[0].inSlope
+      value: -0.0011751214
+      objectReference: {fileID: 0}
+    - target: {fileID: 6733180756420920224, guid: 5c736c67428924646b925499ac8d6879, type: 3}
+      propertyPath: m_LevelEndEffectAnimCurve.m_Curve.Array.data[1].inSlope
+      value: -0.0011751214
+      objectReference: {fileID: 0}
+    - target: {fileID: 6733180756420920224, guid: 5c736c67428924646b925499ac8d6879, type: 3}
+      propertyPath: m_LevelEndEffectAnimCurve.m_Curve.Array.data[2].inSlope
+      value: 0.8578841
+      objectReference: {fileID: 0}
+    - target: {fileID: 6733180756420920224, guid: 5c736c67428924646b925499ac8d6879, type: 3}
+      propertyPath: m_LevelEndEffectAnimCurve.m_Curve.Array.data[3].inSlope
+      value: 1.7525048
+      objectReference: {fileID: 0}
+    - target: {fileID: 6733180756420920224, guid: 5c736c67428924646b925499ac8d6879, type: 3}
+      propertyPath: m_LevelEndEffectAnimCurve.m_Curve.Array.data[0].outSlope
+      value: -0.0011751214
+      objectReference: {fileID: 0}
+    - target: {fileID: 6733180756420920224, guid: 5c736c67428924646b925499ac8d6879, type: 3}
+      propertyPath: m_LevelEndEffectAnimCurve.m_Curve.Array.data[1].outSlope
+      value: 0.8578841
+      objectReference: {fileID: 0}
+    - target: {fileID: 6733180756420920224, guid: 5c736c67428924646b925499ac8d6879, type: 3}
+      propertyPath: m_LevelEndEffectAnimCurve.m_Curve.Array.data[2].outSlope
+      value: 6.511601
+      objectReference: {fileID: 0}
+    - target: {fileID: 6733180756420920224, guid: 5c736c67428924646b925499ac8d6879, type: 3}
+      propertyPath: m_LevelEndEffectAnimCurve.m_Curve.Array.data[3].inWeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6733180756420920224, guid: 5c736c67428924646b925499ac8d6879, type: 3}
+      propertyPath: m_LevelEndEffectAnimCurve.m_Curve.Array.data[3].outSlope
+      value: 1.6062081
+      objectReference: {fileID: 0}
+    - target: {fileID: 6733180756420920224, guid: 5c736c67428924646b925499ac8d6879, type: 3}
+      propertyPath: m_LevelEndEffectAnimCurve.m_Curve.Array.data[2].outWeight
+      value: 0.06935572
+      objectReference: {fileID: 0}
+    - target: {fileID: 6733180756420920224, guid: 5c736c67428924646b925499ac8d6879, type: 3}
+      propertyPath: m_LevelEndEffectAnimCurve.m_Curve.Array.data[3].outWeight
+      value: 0.77090174
+      objectReference: {fileID: 0}
+    - target: {fileID: 6733180756420920224, guid: 5c736c67428924646b925499ac8d6879, type: 3}
+      propertyPath: m_LevelEndEffectAnimCurve.m_Curve.Array.data[2].tangentMode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6733180756420920224, guid: 5c736c67428924646b925499ac8d6879, type: 3}
+      propertyPath: m_LevelEndEffectAnimCurve.m_Curve.Array.data[3].tangentMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8818702025346316606, guid: 5c736c67428924646b925499ac8d6879, type: 3}
       propertyPath: m_Name
       value: LevelManager
