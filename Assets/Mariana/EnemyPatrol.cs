@@ -6,8 +6,11 @@ public class EnemyPatrol : MonoBehaviour
 {
     public GameObject pointA;
     public GameObject pointB;
+
     private Rigidbody2D rb;
+
     private Transform currentPoint;
+
     public float speed;
 
     void Start()

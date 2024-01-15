@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyShooting : MonoBehaviour
+public class DuplicateEnemy : MonoBehaviour
 {
-    public GameObject bullet;
+    public GameObject miniEnemy;
     private GameObject player;
 
-    public Transform bulletPos;
+    public Transform miniPos;
 
     public Animator anim;
 
+    private float distance;
     private float timer;
 
     void Start()
@@ -21,24 +22,23 @@ public class EnemyShooting : MonoBehaviour
 
     void Update()
     {
-        float distance = Vector2.Distance(transform.position, player.transform.position);
-        Debug.Log(distance);
-        anim.SetBool("IsAttacking", false);
+        anim.SetBool("StartAnim", false);
+        distance = Vector2.Distance(transform.position, player.transform.position);
 
         if (distance < 10)
         {
+            anim.SetBool("StartAnim", true);
             timer += Time.deltaTime;
 
             if (timer > 2)
             {
                 timer = 0;
-                anim.SetBool("IsAttacking", true);
             }
         }
     }
 
-    void Shoot()
+    void Duplicate() 
     {
-        Instantiate(bullet, bulletPos.position, Quaternion.identity);
+        Instantiate(miniEnemy, miniPos.position, Quaternion.identity);
     }
 }

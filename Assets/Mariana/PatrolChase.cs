@@ -8,14 +8,20 @@ public class PatrolChase : MonoBehaviour
 {
     public GameObject pointA;
     public GameObject pointB;
-    public GameObject player;
+    private GameObject player;
+
     private Rigidbody2D rb;
+
     private Transform currentPoint;
+
+    public Animator anim;
+
     public float speed;
     public float distanceBetween;
     private float distance;
-    public Animator anim;
+
     public bool patrolState = true;
+
     public string facing = "right";
     public string previousFacing;
 
@@ -26,6 +32,7 @@ public class PatrolChase : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         currentPoint = pointB.transform;
         anim = GetComponent<Animator>();

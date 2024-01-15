@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class AIChase : MonoBehaviour
 {
-    public GameObject player;
+    private GameObject player;
+
+    private Rigidbody2D rb;
+
+    public Animator anim;
+
     public float speed;
     public float distanceBetween;
     private float distance;
-    private Rigidbody2D rb;
-    public Animator anim;
 
     public string facing = "right";
     public string previousFacing;
@@ -21,6 +24,7 @@ public class AIChase : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();   
     }
