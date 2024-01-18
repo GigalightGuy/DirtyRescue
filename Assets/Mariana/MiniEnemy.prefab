@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3592778791071174796}
   - component: {fileID: 698874285570387068}
   - component: {fileID: 812798227344854424}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MiniEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}

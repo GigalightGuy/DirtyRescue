@@ -30,7 +30,8 @@ public class EnemyHealth : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            health -= 5; 
+            health -= 5;
+            Player.Instance.TakeDamage(1);
         }
     }
 

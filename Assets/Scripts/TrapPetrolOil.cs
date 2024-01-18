@@ -8,11 +8,6 @@ public class TrapPetrolOil : MonoBehaviour
     [SerializeField] private float timer;
     [SerializeField] private bool isIn = false;
 
-    private void Start()
-    {
-        onFire = true;
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -42,6 +37,11 @@ public class TrapPetrolOil : MonoBehaviour
             Player.Instance.TakeDamage(1);
             Debug.Log("took 1 damage");
             isIn = true;           
+        }
+
+        if (!onFire && collision.gameObject.CompareTag("Cigar"))
+        {
+            this.onFire = true;
         }
     }
 
