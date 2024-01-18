@@ -15,6 +15,5 @@ public class SpecialToken : MonoBehaviour
             _image.gameObject.SetActive(false);
             Scoring.Instance.AddScore(500);
         }
-
     }
 }
