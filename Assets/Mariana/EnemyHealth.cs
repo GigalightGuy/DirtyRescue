@@ -40,8 +40,8 @@ public class EnemyHealth : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void OnDestroy()
-    {
-        Instantiate(fim, fimSpawn.transform.position, Quaternion.identity);
-    }
+    //void OnDestroy()
+    //{
+    //    Instantiate(fim, fimSpawn.transform.position, Quaternion.identity);
+    //}
 }

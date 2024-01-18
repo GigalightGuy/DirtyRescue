@@ -19,6 +19,7 @@ public class PatrolChase : MonoBehaviour
     public float speed;
     public float distanceBetween;
     private float distance;
+    private float posYplayer, posYenemy, posTotalY, posXplayer, posXenemy, posTotalX;
 
     public bool patrolState = true;
 
@@ -40,12 +41,25 @@ public class PatrolChase : MonoBehaviour
 
     void Update()
     {
-        distance = Vector2.Distance(transform.position, player.transform.position);
+        //distance = Vector2.Distance(transform.position, player.transform.position);
+        posXplayer = player.transform.position.x;
+        posXenemy = this.transform.position.x;
 
-        if (distance < distanceBetween)
+        posYplayer = player.transform.position.y;
+        posYenemy = this.transform.position.y;
+
+        posTotalX = Mathf.Abs(posXplayer - posXenemy);
+        posTotalY = Mathf.Abs(posYplayer - posYenemy);
+
+        if (posTotalY < 1 && posTotalX < 8) 
         {
             Chase();
         }
+
+        //if (distance < distanceBetween)
+        //{
+        //    Chase();
+        //}
         else if (patrolState == true)
         {
             anim.SetBool("IsRunning", false);

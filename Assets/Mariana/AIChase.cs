@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AIChase : MonoBehaviour
@@ -26,7 +27,7 @@ public class AIChase : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();   
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -34,7 +35,7 @@ public class AIChase : MonoBehaviour
         anim.SetBool("IsRunning", false);
 
         distance = Vector2.Distance(transform.position, player.transform.position);
-
+        
         if (distance < distanceBetween) 
         {
             if (player.transform.position.x > this.transform.position.x)
