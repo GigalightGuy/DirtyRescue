@@ -2915,7 +2915,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 659532865368765291, guid: d41ec8a89f796d74c864835b0113b36c, type: 3}
       propertyPath: m_GravityScale
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2698652669000449538, guid: d41ec8a89f796d74c864835b0113b36c, type: 3}
       propertyPath: m_Name
@@ -21585,7 +21585,7 @@ Transform:
   m_GameObject: {fileID: 1734619933}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 181.82, y: 2.43, z: 0}
+  m_LocalPosition: {x: 113.3, y: 2.34, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
