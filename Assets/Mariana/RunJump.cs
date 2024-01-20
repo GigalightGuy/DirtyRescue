@@ -4,68 +4,131 @@ using UnityEngine;
 
 public class RunJump : MonoBehaviour
 {
-    private GameObject player;
-
-    private Rigidbody2D rb;
+    [Header("For Patrol")]
+    public Transform groundCheckPoint;
+    public Transform wallCheckPoint;
 
     public float speed;
-    private float timer;
+    private float moveDirection = 1;
+    public float circleRadius;
 
-    public string facing = "right";
-    public string previousFacing;
+    public LayerMask groundLayer;
+    
+    private bool facingRight = true;
+    private bool checkGround;
+    private bool checkWall;
 
-    private void Awake()
-    {
-        previousFacing = facing;
-    }
+    
+    [Header("For Jump")]
+    public Transform player;
+    public Transform groundCheck;
+
+    public float jumpHeight;
+
+    public Vector2 boxSize;
+
+    private bool isGrounded;
+
+
+    [Header("For SeePlayer")]
+    public Vector2 lineOfSite;
+
+    public LayerMask playerLayer;
+
+    private bool canSeePlayer;
+
+
+    [Header("Other")]
+    private Rigidbody2D enemyrb;
+
+    private Animator enemyAnim;
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        rb = GetComponent<Rigidbody2D>();
+        enemyrb = GetComponent<Rigidbody2D>();
+        enemyAnim = GetComponent<Animator>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        if (player.transform.position.x > this.transform.position.x)
+        checkGround = Physics2D.OverlapCircle(groundCheckPoint.position, circleRadius, groundLayer);
+        checkWall = Physics2D.OverlapCircle(wallCheckPoint.position, circleRadius, groundLayer);
+        isGrounded = Physics2D.OverlapBox(groundCheck.position, boxSize, 0, groundLayer);
+        canSeePlayer = Physics2D.OverlapBox(transform.position, lineOfSite, 0, playerLayer);
+        AnimationController();
+        if (!canSeePlayer && isGrounded) 
         {
-            rb.velocity = new Vector2(speed, 0);
-            facing = "left";
+            Patrol();
         }
-
-        if (player.transform.position.x < this.transform.position.x)
-        {
-            rb.velocity = new Vector2(-speed, 0);
-            facing = "right";
-        }
-
-        Vector2 move = Vector2.zero;
-        move.x = Input.GetAxis("Horizontal");
-        DetermineFacing(move);
-
-        timer += Time.deltaTime;
-
-        if (timer > 4)
-        {
-            Destroy(gameObject);
-        }
+        
     }
 
-    void DetermineFacing(Vector2 move)
+    void Patrol()
     {
-        if (previousFacing != facing)
+        if (!checkGround || checkWall) 
         {
-            previousFacing = facing;
-            gameObject.transform.Rotate(0, 180, 0);
+            if (facingRight)
+            {
+                Flip();
+            }
+            else if (!facingRight)
+            {
+                Flip();
+            }
+        }
+        enemyrb.velocity = new Vector2(speed * moveDirection, enemyrb.velocity.y);
+    }
+
+    void JumpAttack() 
+    {
+        float distanceFromPlayer = player.position.x - transform.position.x;
+
+        if (isGrounded) 
+        {
+            enemyrb.AddForce(new Vector2(distanceFromPlayer, jumpHeight), ForceMode2D.Impulse);
         }
     }
 
-    //void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Player"))
-    //    {
-    //        //collision.gameObject.GetComponent<PlayerHealth>().health -= 17;
-    //        Destroy(gameObject);
-    //    }
-    //}
+    void FlipToPlayer() 
+    {
+        float playerPosition = player.position.x - transform.position.x;
+        if (playerPosition < 0 && facingRight) 
+        {
+            Flip();
+        }
+        else if (playerPosition > 0 && !facingRight)
+        {
+            Flip();
+        }
+    }
+
+    void Flip() 
+    {
+        moveDirection *= -1;
+        facingRight = !facingRight;
+        transform.Rotate(0, 180,0);
+    }
+
+    void AnimationController() 
+    {
+        enemyAnim.SetBool("canSeePlayer", canSeePlayer);
+        enemyAnim.SetBool("isGrounded", isGrounded);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Player.Instance.TakeDamage(1);
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(groundCheckPoint.position, circleRadius);
+        Gizmos.DrawWireSphere(wallCheckPoint.position, circleRadius);
+        Gizmos.DrawCube(groundCheck.position, boxSize);
+        Gizmos.DrawWireCube(transform.position, lineOfSite);
+    }
 }

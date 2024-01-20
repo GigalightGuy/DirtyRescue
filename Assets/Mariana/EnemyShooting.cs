@@ -22,7 +22,6 @@ public class EnemyShooting : MonoBehaviour
     void Update()
     {
         float distance = Vector2.Distance(transform.position, player.transform.position);
-        Debug.Log(distance);
         anim.SetBool("IsAttacking", false);
 
         if (distance < 10)
@@ -41,6 +40,7 @@ public class EnemyShooting : MonoBehaviour
     {
         Instantiate(bullet, bulletPos.position, Quaternion.identity);
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
