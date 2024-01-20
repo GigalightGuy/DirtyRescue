@@ -19,8 +19,8 @@ TagManager:
   - PlayerHitbox
   - EnemyHurtbox
   - EnemyHitbox
-  - 
-  - 
+  - Flammable
+  - Fire
   - 
   - 
   - 
