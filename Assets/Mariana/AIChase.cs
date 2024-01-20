@@ -14,6 +14,7 @@ public class AIChase : MonoBehaviour
     public float speed;
     public float distanceBetween;
     private float distance;
+    private float posYplayer, posYenemy, posTotalY, posXplayer, posXenemy, posTotalX;
 
     public string facing = "right";
     public string previousFacing;
@@ -34,9 +35,18 @@ public class AIChase : MonoBehaviour
     {
         anim.SetBool("IsRunning", false);
 
-        distance = Vector2.Distance(transform.position, player.transform.position);
-        
-        if (distance < distanceBetween) 
+        //distance = Vector2.Distance(transform.position, player.transform.position);
+
+        posXplayer = player.transform.position.x;
+        posXenemy = this.transform.position.x;
+
+        posYplayer = player.transform.position.y;
+        posYenemy = this.transform.position.y;
+
+        posTotalX = Mathf.Abs(posXplayer - posXenemy);
+        posTotalY = Mathf.Abs(posYplayer - posYenemy);
+
+        if (posTotalY < 1 && posTotalX < 8) 
         {
             if (player.transform.position.x > this.transform.position.x)
             {
@@ -72,5 +82,13 @@ public class AIChase : MonoBehaviour
         Vector3 localScale = transform.localScale;
         localScale.x *= -1;
         transform.localScale = localScale;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Player.Instance.TakeDamage(1);
+        }
     }
 }

@@ -17,10 +17,10 @@ public class EnemyBullet : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         Vector3 direction = player.transform.position - transform.position;
-        rb.velocity = new Vector2(direction.x, direction.y).normalized * force;
+        rb.velocity = new Vector2(direction.x, 0).normalized * force;
 
         float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0,0, rot + 90);
+        transform.rotation = Quaternion.Euler(0, 0, rot + 90);
     }
 
     void Update()
@@ -38,6 +38,10 @@ public class EnemyBullet : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Player.Instance.TakeDamage(1);
+            Destroy(gameObject);
+        }
+        else
+        {
             Destroy(gameObject);
         }
     }
