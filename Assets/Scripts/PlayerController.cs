@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
 
         m_InputActions.Player.Jump.performed += OnJumpInput;
         m_InputActions.Player.Jump.canceled += OnJumpInput;
+
+        m_InputActions.Player.Attack.performed += OnAttackInput;
     }
 
     private void OnDisable()
@@ -32,6 +34,7 @@ public class PlayerController : MonoBehaviour
         m_InputActions.Player.Jump.performed -= OnJumpInput;
         m_InputActions.Player.Jump.canceled -= OnJumpInput;
 
+        m_InputActions.Player.Attack.performed -= OnAttackInput;
     }
 
     private void OnMoveInput(InputAction.CallbackContext ctx)
@@ -52,4 +55,10 @@ public class PlayerController : MonoBehaviour
             m_Player.StopJumping();
         }
     }
+
+    private void OnAttackInput(InputAction.CallbackContext ctx)
+    {
+        m_Player.Attack();
+    }
+
 }

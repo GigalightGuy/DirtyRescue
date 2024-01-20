@@ -9,6 +9,7 @@ public class Player : MonoBehaviour, IDamageable
         Idle,
         Running,
         Jumping,
+        Attacking,
         Falling,
         Damaged,
         Rooted,
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour, IDamageable
     private static readonly int k_JumpAnimStateId = Animator.StringToHash("Jump");
     private static readonly int k_FallAnimStateId = Animator.StringToHash("Fall");
     private static readonly int k_DamagedAnimStateId = Animator.StringToHash("Damaged");
+    private static readonly int k_TurtleSwingAnimStateId = Animator.StringToHash("TurtleSwing");
 
     private static Player s_Instance;
     public static Player Instance => s_Instance;
@@ -45,6 +47,8 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] private int m_MaxHealth = 6;
     [SerializeField] private int m_Damage = 1;
 
+    [SerializeField] private float m_TurtleSwingImpactFrameDuration = 0.1f;
+
     [Space]
     [SerializeField] private LayerMask m_GroundedLayerMask;
 
@@ -56,7 +60,6 @@ public class Player : MonoBehaviour, IDamageable
     private bool m_IsGrounded = false;
 
     private float m_MoveInput = 0f;
-    private float m_Movement = 0f;
 
     private bool m_JumpInput = false;
 
@@ -70,6 +73,10 @@ public class Player : MonoBehaviour, IDamageable
     private bool m_JumpInQueue = false;
 
     private Timer m_RootedTimer;
+
+    private Timer m_TurtleSwingImpactFrameTimer;
+
+    private bool m_StopAttacking;
 
     private State m_CurrentState = State.Idle;
 
@@ -100,6 +107,7 @@ public class Player : MonoBehaviour, IDamageable
         m_CoyoteTimer = new Timer();
         m_JumpBufferTimer = new Timer();
         m_RootedTimer = new Timer();
+        m_TurtleSwingImpactFrameTimer = new Timer();
 
         // Calculate jump initial velocity from max jump height
         float g = Physics2D.gravity.y * m_GravityMultiplier;
@@ -175,6 +183,13 @@ public class Player : MonoBehaviour, IDamageable
                     m_RB.gravityScale = m_GravityMultiplierWhenFalling;
                 }
                 break;
+            case State.Attacking:
+                if (m_StopAttacking)
+                {
+                    m_CurrentState = State.Idle;
+                    m_Animator.Play(k_IdleAnimStateId);
+                }
+                break;
             case State.Falling:
                 if (m_IsGrounded)
                 {
@@ -211,6 +226,12 @@ public class Player : MonoBehaviour, IDamageable
             case State.Jumping:
                 HandleMovement();
                 HandleFlipping();
+                break;
+            case State.Attacking:
+                if (m_TurtleSwingImpactFrameTimer.HasEnded())
+                {
+                    m_Animator.speed = 1f;
+                }
                 break;
             case State.Falling:
                 HandleMovement();
@@ -281,6 +302,25 @@ public class Player : MonoBehaviour, IDamageable
     public void StopJumping()
     {
         m_JumpInput = false;
+    }
+
+    public void Attack()
+    {
+        m_CurrentState = State.Attacking;
+        m_StopAttacking = false;
+        m_Animator.Play(k_TurtleSwingAnimStateId);
+    }
+
+    public void OnAttackFinished()
+    {
+        m_StopAttacking = true;
+    }
+
+    public void ProcessHit()
+    {
+        m_Animator.speed = 0;
+        m_TurtleSwingImpactFrameTimer.Start(m_TurtleSwingImpactFrameDuration);
+        Debug.Log("Hit");
     }
 
     private void HandleMovement()
