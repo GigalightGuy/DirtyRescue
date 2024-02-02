@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2891854334382044002
 Transform:
   m_ObjectHideFlags: 0
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3639b9c7e7f853a4fa17892d860364bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingPoint: {fileID: 4429161356875257979, guid: f837f2b5b47995843a4b5bcae980db87, type: 3}
+  startingPoint: {fileID: 0}
   chase: 0
   speed: 2
 --- !u!95 &6946818895071578907

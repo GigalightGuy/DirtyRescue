@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &732671179766239377
 Transform:
   m_ObjectHideFlags: 0
@@ -194,8 +194,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a3a7c8c8fc25d941ac23b473e0f1fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointA: {fileID: 5314912505685872779, guid: 335aab9f9b4d8b342a1feef5a62a799b, type: 3}
-  pointB: {fileID: 1558208366992688073, guid: b2cc05f2b79acc54fb24c6c458cde381, type: 3}
+  pointA: {fileID: 0}
+  pointB: {fileID: 0}
   speed: 2
 --- !u!1 &5479292986604717114
 GameObject:
