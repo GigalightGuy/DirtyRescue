@@ -20,7 +20,7 @@ public class RunJump : MonoBehaviour
 
     
     [Header("For Jump")]
-    public Transform player;
+    private Transform player;
     public Transform groundCheck;
 
     public float jumpHeight;
@@ -47,6 +47,7 @@ public class RunJump : MonoBehaviour
     {
         enemyrb = GetComponent<Rigidbody2D>();
         enemyAnim = GetComponent<Animator>();
+        player = Player.Instance.transform;
     }
 
     void FixedUpdate()
@@ -115,7 +116,7 @@ public class RunJump : MonoBehaviour
         enemyAnim.SetBool("isGrounded", isGrounded);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {

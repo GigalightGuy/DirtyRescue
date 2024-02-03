@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TrapPetrolOil : MonoBehaviour
 {
-    [SerializeField] private bool onFire;
+    [SerializeField] public bool onFire;
     [SerializeField] private float timer;
     [SerializeField] private bool isIn = false;
 
@@ -35,13 +35,7 @@ public class TrapPetrolOil : MonoBehaviour
         if (onFire == true && collision.gameObject.CompareTag("Player"))
         {
             Player.Instance.TakeDamage(1);
-            Debug.Log("took 1 damage");
             isIn = true;           
-        }
-
-        if (!onFire && collision.gameObject.CompareTag("Cigar"))
-        {
-            this.onFire = true;
         }
     }
 

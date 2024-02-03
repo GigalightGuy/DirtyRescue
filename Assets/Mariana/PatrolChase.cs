@@ -188,7 +188,7 @@ public class PatrolChase : MonoBehaviour
         Gizmos.DrawWireSphere(pointB.transform.position, 0.5f);
         Gizmos.DrawLine(pointA.transform.position, pointB.transform.position);
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
