@@ -394,9 +394,12 @@ public class Player : MonoBehaviour, IDamageable
         if (Mathf.Abs(velocity) > 0.01f)
         {
             bool isLeft = velocity < 0f;
-            if (isLeft != m_Sprite.flipX)
+            Vector2 scale = transform.localScale;
+            bool xScaleFlipped = scale.x < 0f;
+            if (isLeft != xScaleFlipped)
             {
-                m_Sprite.flipX = isLeft;
+                scale.x *= -1f;
+                transform.localScale = scale;
             }
         }
     }
