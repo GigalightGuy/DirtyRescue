@@ -76,6 +76,8 @@ public class Player : MonoBehaviour, IDamageable
 
     private Timer m_TurtleSwingImpactFrameTimer;
 
+    private Timer m_DamageStateTimer;
+
     private bool m_StopAttacking;
 
     private State m_CurrentState = State.Idle;
@@ -108,6 +110,7 @@ public class Player : MonoBehaviour, IDamageable
         m_JumpBufferTimer = new Timer();
         m_RootedTimer = new Timer();
         m_TurtleSwingImpactFrameTimer = new Timer();
+        m_DamageStateTimer = new Timer();
 
         // Calculate jump initial velocity from max jump height
         float g = Physics2D.gravity.y * m_GravityMultiplier;
@@ -118,15 +121,6 @@ public class Player : MonoBehaviour, IDamageable
         m_MinJumpTime = (-v0 + Mathf.Sqrt(v0 * v0 - 4f * 0.5f * g * (-m_MinJumpHeight))) / (g);
 
         m_Health = m_MaxHealth;
-    }
-
-    private void Update()
-    {
-        // DEBUG
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            TakeDamage(1);
-        }
     }
 
     private void FixedUpdate()
@@ -197,7 +191,10 @@ public class Player : MonoBehaviour, IDamageable
                 }
                 break;
             case State.Damaged:
-                m_CurrentState = State.Falling;
+                if (m_DamageStateTimer.HasEnded())
+                {
+                    m_CurrentState = State.Falling;
+                }
                 break;
             case State.Rooted:
                 if (m_RootedTimer.HasEnded())
@@ -272,6 +269,7 @@ public class Player : MonoBehaviour, IDamageable
         else
         {
             m_CurrentState = State.Damaged;
+            m_DamageStateTimer.Start(0.5f);
             m_Animator.Play(k_DamagedAnimStateId);
         }
     }

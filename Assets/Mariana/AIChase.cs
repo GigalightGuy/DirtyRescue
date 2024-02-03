@@ -89,6 +89,11 @@ public class AIChase : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Player.Instance.TakeDamage(1);
+            Vector2 impactDir = collision.transform.position - transform.position;
+            impactDir.x = Mathf.Sign(impactDir.x);
+            impactDir.y = 0.5f;
+            impactDir = impactDir.normalized;
+            collision.attachedRigidbody.AddForce(12f * impactDir, ForceMode2D.Impulse);
         }
     }
 }
