@@ -110,7 +110,7 @@ public class RunJump : MonoBehaviour
         transform.Rotate(0, 180,0);
     }
 
-    void AnimationController() 
+    void AnimationController()
     {
         enemyAnim.SetBool("canSeePlayer", canSeePlayer);
         enemyAnim.SetBool("isGrounded", isGrounded);
