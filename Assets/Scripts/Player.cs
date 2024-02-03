@@ -232,6 +232,7 @@ public class Player : MonoBehaviour, IDamageable
                 {
                     m_Animator.speed = 1f;
                 }
+                Brake();
                 break;
             case State.Falling:
                 HandleMovement();
@@ -316,11 +317,11 @@ public class Player : MonoBehaviour, IDamageable
         m_StopAttacking = true;
     }
 
-    public void ProcessHit()
+    public void ProcessHit(Rigidbody2D rb, Vector2 direction)
     {
         m_Animator.speed = 0;
         m_TurtleSwingImpactFrameTimer.Start(m_TurtleSwingImpactFrameDuration);
-        Debug.Log("Hit");
+        rb.AddForce(50f * direction, ForceMode2D.Impulse);
     }
 
     private void HandleMovement()
@@ -332,7 +333,27 @@ public class Player : MonoBehaviour, IDamageable
 
         m_RB.AddForce(force * Vector2.right);
 
-        if (m_IsGrounded && Mathf.Abs(m_MoveInput) < 0.01f)
+        if (Mathf.Abs(m_MoveInput) < 0.01f)
+        {
+            HandleBraking();
+        }
+    }
+
+    private void Brake()
+    {
+        float desiredVel = 0f;
+        float velDiff = desiredVel - m_RB.velocity.x;
+        float accel = (Mathf.Abs(desiredVel) > 0.01f) ? m_Acceleration : m_Deceleration;
+        float force = Mathf.Pow(Mathf.Abs(velDiff) * accel, m_AccelerationExponent) * Mathf.Sign(velDiff);
+
+        m_RB.AddForce(force * Vector2.right);
+
+        HandleBraking();
+    }
+
+    private void HandleBraking()
+    {
+        if (m_IsGrounded)
         {
             float vel = m_RB.velocity.x;
             float brakeAmount = Mathf.Min(Mathf.Abs(vel), m_BrakeForce);
@@ -373,9 +394,12 @@ public class Player : MonoBehaviour, IDamageable
         if (Mathf.Abs(velocity) > 0.01f)
         {
             bool isLeft = velocity < 0f;
-            if (isLeft != m_Sprite.flipX)
+            Vector2 scale = transform.localScale;
+            bool xScaleFlipped = scale.x < 0f;
+            if (isLeft != xScaleFlipped)
             {
-                m_Sprite.flipX = isLeft;
+                scale.x *= -1f;
+                transform.localScale = scale;
             }
         }
     }
