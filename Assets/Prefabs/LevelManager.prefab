@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3457235807007248418}
   - component: {fileID: 6733180756420920224}
+  - component: {fileID: 5066861258255642490}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -47,6 +48,7 @@ MonoBehaviour:
   m_PlayerCameraPrefab: {fileID: 6691684407098844026, guid: e797bd093e681234b86e6fc652b24691, type: 3}
   m_PlayerSpawnPoint: {fileID: 0}
   m_FullscreenMaskMat: {fileID: 2100000, guid: fa12d4970aee1d74f9a7ce9658bc21c1, type: 2}
+  m_StartEffectDuration: 1.5
   m_LevelStartEffectAnimCurve:
     serializedVersion: 2
     m_Curve:
@@ -89,6 +91,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  m_EndEffectDuration: 3
   m_LevelEndEffectAnimCurve:
     serializedVersion: 2
     m_Curve:
@@ -140,3 +143,16 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5066861258255642490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8818702025346316606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e62b242b198ac0a4e9934b1a7adb747b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pauseMenu: {fileID: 0}

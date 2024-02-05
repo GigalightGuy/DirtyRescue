@@ -29,6 +29,9 @@ public class LevelManager : MonoBehaviour
             return;
         }
 
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         var playerCameraGO = Instantiate(m_PlayerCameraPrefab, m_PlayerSpawnPoint.position, Quaternion.identity);
         var player = playerCameraGO.GetComponentInChildren<Player>();
 

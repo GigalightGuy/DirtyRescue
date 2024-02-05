@@ -132,7 +132,7 @@ public class Player : MonoBehaviour, IDamageable
             m_JumpInQueue = false;
         }
 
-        if (m_IsGrounded && m_JumpInQueue)
+        if (m_IsGrounded && m_JumpInQueue && !PauseMenu._isPaused)
         {
             Jump();
         }
@@ -287,14 +287,17 @@ public class Player : MonoBehaviour, IDamageable
 
     public void StartJumping()
     {
-        if (m_CurrentState != State.Jumping && m_IsGrounded || !m_CoyoteTimer.HasEnded())
+        if (!PauseMenu._isPaused)
         {
-            Jump();
-        }
-        else
-        {
-            m_JumpBufferTimer.Start(m_JumpBufferingTime);
-            m_JumpInQueue = true;
+            if (m_CurrentState != State.Jumping && m_IsGrounded || !m_CoyoteTimer.HasEnded())
+            {
+                Jump();
+            }
+            else
+            {
+                m_JumpBufferTimer.Start(m_JumpBufferingTime);
+                m_JumpInQueue = true;
+            }
         }
     }
 
@@ -305,9 +308,13 @@ public class Player : MonoBehaviour, IDamageable
 
     public void Attack()
     {
-        m_CurrentState = State.Attacking;
-        m_StopAttacking = false;
-        m_Animator.Play(k_TurtleSwingAnimStateId);
+        if (!PauseMenu._isPaused)
+        {
+            m_CurrentState = State.Attacking;
+            m_StopAttacking = false;
+            m_Animator.Play(k_TurtleSwingAnimStateId);
+            AudioManager.instance.PunchSFX();
+        }
     }
 
     public void OnAttackFinished()
@@ -370,6 +377,8 @@ public class Player : MonoBehaviour, IDamageable
         m_Animator.Play(k_JumpAnimStateId);
 
         m_JumpTimer.Start(m_MinJumpTime);
+
+        AudioManager.instance.PlayerJump();
     }
 
     private void Land()
