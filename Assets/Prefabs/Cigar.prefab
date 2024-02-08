@@ -98,7 +98,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1200071644300205418
 Transform:
   m_ObjectHideFlags: 0
@@ -296,6 +296,7 @@ MonoBehaviour:
   anim: {fileID: 6156965396756794273}
   fim: {fileID: 5665968388577686127, guid: ad3af8c694740de45a02da93ef25e0df, type: 3}
   fimSpawn: {fileID: 7392349455661936214}
+  scoreSO: {fileID: 11400000, guid: df300d24fb248854a9f4cfd06c360530, type: 2}
 --- !u!1 &6938527439542535218
 GameObject:
   m_ObjectHideFlags: 0

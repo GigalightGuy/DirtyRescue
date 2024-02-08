@@ -23,6 +23,8 @@ public class SpecialToken : MonoBehaviour
     private bool _succeed = false;
     private bool oneTimeeffects = true;
 
+    [SerializeField] private SOFloat scoreSO;
+
     KeyCode _key;
     KeyCode[] availableOptions = { KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3 };
 
@@ -70,7 +72,7 @@ public class SpecialToken : MonoBehaviour
                     _quickTimeSlider.gameObject.SetActive(false);
                     _freeze = true;
                     _blankImage.gameObject.SetActive(false);
-                    Scoring.Instance.AddScore(500);
+                    scoreSO.Value += 100;
                     oneTimeeffects = false;
                 }
 
