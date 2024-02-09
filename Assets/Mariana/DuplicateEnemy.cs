@@ -9,7 +9,7 @@ public class DuplicateEnemy : MonoBehaviour
 
     public Transform miniPos;
 
-    public Animator anim;
+    private Animator anim;
 
     private float distance;
     private float timer;
@@ -22,13 +22,13 @@ public class DuplicateEnemy : MonoBehaviour
 
     void Update()
     {
-        anim.SetBool("StartAnim", false);
         distance = Vector2.Distance(transform.position, player.transform.position);
+        anim.enabled = false;
 
         if (distance < 10)
         {
-            anim.SetBool("StartAnim", true);
             timer += Time.deltaTime;
+            anim.enabled = true;
 
             if (timer > 2)
             {

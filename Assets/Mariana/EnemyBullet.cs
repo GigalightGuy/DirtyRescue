@@ -22,16 +22,16 @@ public class EnemyBullet : MonoBehaviour
             Vector3 direction = - transform.position;
             rb.velocity = new Vector2(direction.x, 0).normalized * force;
 
-            float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0, 0, rot + 90);
+            //float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, 0);
         }
         else if (enemy.GetComponent<SpriteRenderer>().flipX == true)
         {
             Vector3 direction = transform.position;
             rb.velocity = new Vector2(direction.x, 0).normalized * force;
 
-            float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0, 0, rot + 90);
+            //float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
 
