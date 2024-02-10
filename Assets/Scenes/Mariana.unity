@@ -2406,6 +2406,10 @@ PrefabInstance:
       value: ChasingTrigger
       objectReference: {fileID: 0}
     - target: {fileID: 2343310174938637403, guid: c904e94e619460c46836b10198c9cd78, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343310174938637403, guid: c904e94e619460c46836b10198c9cd78, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}

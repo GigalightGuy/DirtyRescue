@@ -93,7 +93,6 @@ GameObject:
   - component: {fileID: 3815611014048257657}
   - component: {fileID: 5369407511186979845}
   - component: {fileID: 2271164178298661337}
-  - component: {fileID: 6796061319890297567}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -340,18 +339,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6796061319890297567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3025378900213187932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 692a38d71ef064a41bda4b0608e72019, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7336657766444913256
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,6 +349,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1658272592294699906}
   - component: {fileID: 3389879437841609883}
+  - component: {fileID: 8099541396378651003}
   m_Layer: 8
   m_Name: Turtle Swing Hitbox
   m_TagString: Untagged
@@ -429,3 +417,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1571046, y: 0.8728201}
   m_EdgeRadius: 0
+--- !u!114 &8099541396378651003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7336657766444913256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 692a38d71ef064a41bda4b0608e72019, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
