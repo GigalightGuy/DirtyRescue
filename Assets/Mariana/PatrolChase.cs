@@ -14,7 +14,7 @@ public class PatrolChase : MonoBehaviour
 
     private Transform currentPoint;
 
-    public Animator anim;
+    private Animator anim;
 
     public float speed;
     public float distanceBetween;
