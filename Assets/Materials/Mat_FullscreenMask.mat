@@ -42,7 +42,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Invert: 0
-    - _ScreenRatio: 1.3333334
+    - _ScreenRatio: 1.7777778
     - _UVScale: 0.01
     m_Colors:
     - _Color: {r: 0, g: 0, b: 0, a: 0}
