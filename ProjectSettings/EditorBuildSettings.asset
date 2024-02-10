@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Praia.unity
     guid: 913c01e40420837489a71c61b40678ef
+  - enabled: 1
+    path: Assets/Scenes/EndScreen.unity
+    guid: ec434e89c19f2d7448641670e603697b
   m_configObjects: {}

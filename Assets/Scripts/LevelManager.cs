@@ -13,7 +13,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private float m_EndEffectDuration = 3.0f;
     [SerializeField] private AnimationCurve m_LevelEndEffectAnimCurve;
 
-    private int m_RecyclingScore = 0;
+    [SerializeField] private SOFloat scoreSO;
 
     private void Awake()
     {
@@ -28,6 +28,11 @@ public class LevelManager : MonoBehaviour
             Debug.LogError("Player spawn point not assigned!");
             return;
         }
+
+        scoreSO.Value = 0;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
         var playerCameraGO = Instantiate(m_PlayerCameraPrefab, m_PlayerSpawnPoint.position, Quaternion.identity);
         var player = playerCameraGO.GetComponentInChildren<Player>();

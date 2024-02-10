@@ -15,6 +15,8 @@ public class EnemyHealth : MonoBehaviour
     private static EnemyHealth s_InstanceH;
     public static EnemyHealth Instance => s_InstanceH;
 
+    [SerializeField] private SOFloat scoreSO;
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -39,7 +41,7 @@ public class EnemyHealth : MonoBehaviour
 
     void Destroy()
     {
-        Scoring.Instance.AddScore(100);
+        scoreSO.Value += 100;
         Destroy(gameObject);
     }
 

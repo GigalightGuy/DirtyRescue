@@ -9,7 +9,7 @@ public class EnemyShooting : MonoBehaviour
 
     public Transform bulletPos;
 
-    public Animator anim;
+    private Animator anim;
 
     private float timer;
 
