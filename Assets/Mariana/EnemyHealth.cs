@@ -39,10 +39,10 @@ public class EnemyHealth : MonoBehaviour
     //    }
     //}
 
-    void Destroy()
+    void Die()
     {
         scoreSO.Value += 100;
-        Destroy(gameObject);
+        Destroy(gameObject, 1.0f);
     }
 
     //void OnDestroy()
@@ -58,6 +58,7 @@ public class EnemyHealth : MonoBehaviour
         {
             anim.SetBool("IsHit", true);
             health = 0;
+            Die();
         }
     }
 }

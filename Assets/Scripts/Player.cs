@@ -53,7 +53,6 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] private LayerMask m_GroundedLayerMask;
 
     private Animator m_Animator;
-    private SpriteRenderer m_Sprite;
 
     private Rigidbody2D m_RB;
 
@@ -100,7 +99,6 @@ public class Player : MonoBehaviour, IDamageable
         s_Instance = this;
 
         m_Animator = GetComponent<Animator>();
-        m_Sprite = GetComponent<SpriteRenderer>();
 
         m_RB = GetComponent<Rigidbody2D>();
         m_RB.gravityScale = m_GravityMultiplier;
@@ -322,11 +320,14 @@ public class Player : MonoBehaviour, IDamageable
         m_StopAttacking = true;
     }
 
-    public void ProcessHit(Rigidbody2D rb, Vector2 direction)
+    public void ProcessHit(EnemyHealth enemyHealth, Rigidbody2D rb, Vector2 direction)
     {
         m_Animator.speed = 0;
         m_TurtleSwingImpactFrameTimer.Start(m_TurtleSwingImpactFrameDuration);
-        rb.AddForce(50f * direction, ForceMode2D.Impulse);
+        if (enemyHealth)
+            enemyHealth.TakeDamage(1);
+        if (rb)
+            rb.AddForce(5f * direction, ForceMode2D.Impulse);
     }
 
     private void HandleMovement()
