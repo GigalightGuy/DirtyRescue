@@ -9,7 +9,7 @@ public class AIChase : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    public Animator anim;
+    private Animator anim;
 
     public float speed;
     public float distanceBetween;
