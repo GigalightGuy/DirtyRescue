@@ -437,6 +437,7 @@ GameObject:
   - component: {fileID: 1686165865847003463}
   - component: {fileID: 4819146535162927942}
   - component: {fileID: 1460279263033467}
+  - component: {fileID: 5805969923190703548}
   m_Layer: 13
   m_Name: GlassBottle
   m_TagString: Untagged
@@ -517,7 +518,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.030969381, y: 1.3317089}
+  m_Offset: {x: 0.34823942, y: 1.8316555}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -528,7 +529,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.6544595, y: 10.724577}
+  m_Size: {x: 11.596013, y: 11.72447}
   m_EdgeRadius: 0
 --- !u!50 &4819146535162927942
 Rigidbody2D:
@@ -583,3 +584,19 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &5805969923190703548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8582755301136222242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d358a6adc8d72f49b503da7f6266200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  maxHealth: 1
+  anim: {fileID: 8137165569162166431}
+  scoreSO: {fileID: 11400000, guid: df300d24fb248854a9f4cfd06c360530, type: 2}

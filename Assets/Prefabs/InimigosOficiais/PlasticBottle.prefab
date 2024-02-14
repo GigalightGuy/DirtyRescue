@@ -258,6 +258,7 @@ GameObject:
   - component: {fileID: 2108515445954237945}
   - component: {fileID: 5650812084302214513}
   - component: {fileID: 5405516955676605580}
+  - component: {fileID: 5898384337893540587}
   m_Layer: 0
   m_Name: PlasticBottle
   m_TagString: Untagged
@@ -314,7 +315,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.05190277, y: 0.1768943}
+  m_Offset: {x: -0.0067520738, y: 0.26104906}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -325,7 +326,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.3114166, y: 2.0821855}
+  m_Size: {x: 1.969355, y: 2.2504952}
   m_EdgeRadius: 0
 --- !u!50 &2108515445954237945
 Rigidbody2D:
@@ -394,6 +395,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5898384337893540587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6007031317433523639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d358a6adc8d72f49b503da7f6266200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  maxHealth: 1
+  anim: {fileID: 5405516955676605580}
+  scoreSO: {fileID: 11400000, guid: df300d24fb248854a9f4cfd06c360530, type: 2}
 --- !u!1 &6486394257188380765
 GameObject:
   m_ObjectHideFlags: 0

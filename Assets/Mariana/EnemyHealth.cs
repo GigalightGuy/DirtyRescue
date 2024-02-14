@@ -9,8 +9,8 @@ public class EnemyHealth : MonoBehaviour
 
     public Animator anim;
 
-    public GameObject fim;
-    public GameObject fimSpawn;
+    //public GameObject fim;
+    //public GameObject fimSpawn;
 
     private static EnemyHealth s_InstanceH;
     public static EnemyHealth Instance => s_InstanceH;

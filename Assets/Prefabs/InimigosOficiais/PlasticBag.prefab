@@ -265,6 +265,7 @@ GameObject:
   - component: {fileID: 3714656874853739618}
   - component: {fileID: 8962099905329916331}
   - component: {fileID: 2986990086758547288}
+  - component: {fileID: 1282406866978187422}
   m_Layer: 13
   m_Name: PlasticBag
   m_TagString: Untagged
@@ -371,7 +372,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.3988304, y: 1.8346224}
+  m_Offset: {x: 0.6502037, y: 2.281555}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -382,7 +383,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 29.02452, y: 17.644545}
+  m_Size: {x: 33.884987, y: 20.326145}
   m_EdgeRadius: 0
 --- !u!114 &2986990086758547288
 MonoBehaviour:
@@ -399,6 +400,22 @@ MonoBehaviour:
   startingPoint: {fileID: 0}
   chase: 0
   speed: 2
+--- !u!114 &1282406866978187422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7253594622193703195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d358a6adc8d72f49b503da7f6266200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  maxHealth: 1
+  anim: {fileID: 8755256495054157711}
+  scoreSO: {fileID: 11400000, guid: df300d24fb248854a9f4cfd06c360530, type: 2}
 --- !u!1 &9130364812374122784
 GameObject:
   m_ObjectHideFlags: 0

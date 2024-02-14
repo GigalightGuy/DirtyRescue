@@ -122,6 +122,7 @@ GameObject:
   - component: {fileID: 5708138868316439438}
   - component: {fileID: 2154410500700782639}
   - component: {fileID: 7383483808070737492}
+  - component: {fileID: 6402842843563184809}
   m_Layer: 13
   m_Name: Cigar
   m_TagString: Cigar
@@ -252,7 +253,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.008659124, y: 0.19817078}
+  m_Offset: {x: -0.059613824, y: 0.19817078}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -263,7 +264,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2830954, y: 2.8726585}
+  m_Size: {x: 1.714237, y: 2.8726585}
   m_EdgeRadius: 0
 --- !u!50 &2154410500700782639
 Rigidbody2D:
@@ -308,6 +309,22 @@ MonoBehaviour:
   distanceBetween: 10
   facing: right
   previousFacing: 
+--- !u!114 &6402842843563184809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7511696821319828060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d358a6adc8d72f49b503da7f6266200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  maxHealth: 1
+  anim: {fileID: 4702686612956253794}
+  scoreSO: {fileID: 11400000, guid: df300d24fb248854a9f4cfd06c360530, type: 2}
 --- !u!1 &8725345212274706949
 GameObject:
   m_ObjectHideFlags: 0

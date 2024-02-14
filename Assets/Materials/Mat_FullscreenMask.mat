@@ -42,8 +42,8 @@ Material:
     m_Ints: []
     m_Floats:
     - _Invert: 0
-    - _ScreenRatio: 1.9749216
-    - _UVScale: 0.01
+    - _ScreenRatio: 1.9764891
+    - _UVScale: 237.49496
     m_Colors:
     - _Color: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
