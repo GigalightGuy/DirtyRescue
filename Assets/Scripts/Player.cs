@@ -16,6 +16,7 @@ public class Player : MonoBehaviour, IDamageable
         Stunned,
         Dead,
         Defending,
+        ShellSmash,
     }
 
     private static readonly int k_IdleAnimStateId = Animator.StringToHash("Idle");
@@ -27,6 +28,7 @@ public class Player : MonoBehaviour, IDamageable
 
     private static readonly int k_ShellIdleAnimStateId = Animator.StringToHash("ShellIdle");
     private static readonly int k_ShellDefenseAnimStateId = Animator.StringToHash("ShellDefense");
+    private static readonly int k_ShellSmashAnimStateId = Animator.StringToHash("ShellSmash");
 
     private static Player s_Instance;
     public static Player Instance => s_Instance;
@@ -192,6 +194,10 @@ public class Player : MonoBehaviour, IDamageable
                 {
                     m_RB.gravityScale = m_GravityMultiplierWhenFalling;
                 }
+                if (m_DefendInput)
+                {
+                    ShellSmash();
+                }
                 break;
             case State.Attacking:
                 if (m_StopAttacking)
@@ -204,6 +210,10 @@ public class Player : MonoBehaviour, IDamageable
                 if (m_IsGrounded)
                 {
                     Land();
+                }
+                if (m_DefendInput)
+                {
+                    ShellSmash();
                 }
                 break;
             case State.Damaged:
@@ -227,6 +237,12 @@ public class Player : MonoBehaviour, IDamageable
                 {
                     m_CurrentState = State.Idle;
                     m_ShellAnimator.Play(k_ShellIdleAnimStateId);
+                }
+                break;
+            case State.ShellSmash:
+                if (m_IsGrounded)
+                {
+                    ShellSmashImpact();
                 }
                 break;
             case State.None:
@@ -272,6 +288,9 @@ public class Player : MonoBehaviour, IDamageable
                 break;
             case State.Defending:
                 break;
+            case State.ShellSmash:
+                Brake();
+                break;
             case State.None:
                 Debug.LogError("Invalided player state!");
                 break;
@@ -312,6 +331,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void StartJumping()
     {
+        if (m_CurrentState == State.Defending) return;
         if (!PauseMenu._isPaused)
         {
             if (m_CurrentState != State.Jumping && m_IsGrounded || !m_CoyoteTimer.HasEnded())
@@ -339,7 +359,7 @@ public class Player : MonoBehaviour, IDamageable
     public void StopDefending()
     {
         m_DefendInput = false;
-    }
+    }    
 
     public void Attack()
     {
@@ -364,6 +384,13 @@ public class Player : MonoBehaviour, IDamageable
             enemyHealth.TakeDamage(1);
         if (rb)
             rb.AddForce(5f * direction, ForceMode2D.Impulse);
+
+        if (m_CurrentState == State.ShellSmash)
+        {
+            m_RB.velocity = new(m_RB.velocity.x, 0f);
+            m_RB.AddForce(10f * Vector2.up, ForceMode2D.Impulse);
+            m_CurrentState = State.Jumping;
+        }
     }
 
     private void HandleMovement()
@@ -452,5 +479,21 @@ public class Player : MonoBehaviour, IDamageable
     {
         RaycastHit2D hit = Physics2D.CircleCast(transform.position, 0.25f, Vector2.down, 0.3f, m_GroundedLayerMask);
         m_IsGrounded = hit.collider && Vector2.Dot(hit.normal, Vector2.up) > 0.5f;
+    }
+
+    private void ShellSmash()
+    {
+        m_RB.gravityScale = 4.5f;
+        m_CurrentState = State.ShellSmash;
+
+        m_Animator.Play(k_FallAnimStateId);
+        m_ShellAnimator.Play(k_ShellSmashAnimStateId);
+    }
+
+    private void ShellSmashImpact()
+    {
+        m_ShellAnimator.Play(k_ShellIdleAnimStateId);
+
+        Land();
     }
 }
