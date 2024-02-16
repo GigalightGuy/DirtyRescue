@@ -23,6 +23,9 @@ public class PlayerController : MonoBehaviour
         m_InputActions.Player.Jump.canceled += OnJumpInput;
 
         m_InputActions.Player.Attack.performed += OnAttackInput;
+
+        m_InputActions.Player.Defend.performed += OnDefendInput;
+        m_InputActions.Player.Defend.canceled += OnDefendInput;
     }
 
     private void OnDisable()
@@ -35,6 +38,9 @@ public class PlayerController : MonoBehaviour
         m_InputActions.Player.Jump.canceled -= OnJumpInput;
 
         m_InputActions.Player.Attack.performed -= OnAttackInput;
+
+        m_InputActions.Player.Defend.performed -= OnDefendInput;
+        m_InputActions.Player.Defend.canceled -= OnDefendInput;
     }
 
     private void OnMoveInput(InputAction.CallbackContext ctx)
@@ -59,6 +65,19 @@ public class PlayerController : MonoBehaviour
     private void OnAttackInput(InputAction.CallbackContext ctx)
     {
         m_Player.Attack();
+    }
+
+    private void OnDefendInput(InputAction.CallbackContext ctx)
+    {
+        float input = ctx.ReadValue<float>();
+        if (input > 0.5f)
+        {
+            m_Player.StartDefending();
+        }
+        else
+        {
+            m_Player.StopDefending();
+        }
     }
 
 }

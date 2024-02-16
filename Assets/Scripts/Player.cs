@@ -14,7 +14,8 @@ public class Player : MonoBehaviour, IDamageable
         Damaged,
         Rooted,
         Stunned,
-        Dead
+        Dead,
+        Defending,
     }
 
     private static readonly int k_IdleAnimStateId = Animator.StringToHash("Idle");
@@ -23,6 +24,9 @@ public class Player : MonoBehaviour, IDamageable
     private static readonly int k_FallAnimStateId = Animator.StringToHash("Fall");
     private static readonly int k_DamagedAnimStateId = Animator.StringToHash("Damaged");
     private static readonly int k_TurtleSwingAnimStateId = Animator.StringToHash("TurtleSwing");
+
+    private static readonly int k_ShellIdleAnimStateId = Animator.StringToHash("ShellIdle");
+    private static readonly int k_ShellDefenseAnimStateId = Animator.StringToHash("ShellDefense");
 
     private static Player s_Instance;
     public static Player Instance => s_Instance;
@@ -52,6 +56,8 @@ public class Player : MonoBehaviour, IDamageable
     [Space]
     [SerializeField] private LayerMask m_GroundedLayerMask;
 
+    [SerializeField] private Animator m_ShellAnimator;
+
     private Animator m_Animator;
 
     private Rigidbody2D m_RB;
@@ -78,6 +84,8 @@ public class Player : MonoBehaviour, IDamageable
     private Timer m_DamageStateTimer;
 
     private bool m_StopAttacking;
+
+    private bool m_DefendInput;
 
     private State m_CurrentState = State.Idle;
 
@@ -148,6 +156,11 @@ public class Player : MonoBehaviour, IDamageable
                     m_CurrentState = State.Running;
                     m_Animator.Play(k_RunAnimStateId);
                 }
+                if (m_DefendInput)
+                {
+                    m_CurrentState = State.Defending;
+                    m_ShellAnimator.Play(k_ShellDefenseAnimStateId);                    
+                }
                 break;
             case State.Running:
                 if (!m_IsGrounded)
@@ -159,6 +172,11 @@ public class Player : MonoBehaviour, IDamageable
                 {
                     m_CurrentState = State.Idle;
                     m_Animator.Play(k_IdleAnimStateId);
+                }
+                if (m_DefendInput)
+                {
+                    m_CurrentState = State.Defending;
+                    m_ShellAnimator.Play(k_ShellDefenseAnimStateId);
                 }
                 break;
             case State.Jumping:
@@ -204,6 +222,13 @@ public class Player : MonoBehaviour, IDamageable
                 break;
             case State.Dead:
                 break;
+            case State.Defending:
+                if (!m_DefendInput)
+                {
+                    m_CurrentState = State.Idle;
+                    m_ShellAnimator.Play(k_ShellIdleAnimStateId);
+                }
+                break;
             case State.None:
                 Debug.LogError("Invalided player state!");
                 break;
@@ -244,6 +269,8 @@ public class Player : MonoBehaviour, IDamageable
             case State.Rooted:
                 break;
             case State.Dead:
+                break;
+            case State.Defending:
                 break;
             case State.None:
                 Debug.LogError("Invalided player state!");
@@ -304,6 +331,16 @@ public class Player : MonoBehaviour, IDamageable
         m_JumpInput = false;
     }
 
+    public void StartDefending()
+    {
+        m_DefendInput = true;
+    }
+
+    public void StopDefending()
+    {
+        m_DefendInput = false;
+    }
+
     public void Attack()
     {
         if (!PauseMenu._isPaused)
@@ -311,7 +348,6 @@ public class Player : MonoBehaviour, IDamageable
             m_CurrentState = State.Attacking;
             m_StopAttacking = false;
             m_Animator.Play(k_TurtleSwingAnimStateId);
-            AudioManager.instance.PunchSFX();
         }
     }
 

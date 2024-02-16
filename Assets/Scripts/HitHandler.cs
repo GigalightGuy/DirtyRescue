@@ -15,5 +15,7 @@ public class HitHandler : MonoBehaviour
         var rb = other.attachedRigidbody;
         var direction = m_Player.transform.localScale.x < 0 ? Vector2.left : Vector2.right;
         m_Player.ProcessHit(enemyHealth, rb, direction);
+
+        AudioManager.instance.PunchSFX();
     }
 }
