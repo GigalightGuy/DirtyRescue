@@ -11,13 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 0cf72bc965a9d4149bcf52e38d60658e
-  - enabled: 1
-    path: Assets/Scenes/Praia.unity
+  - enabled: 0
+    path: Assets/Scenes/Jorge.unity
     guid: 913c01e40420837489a71c61b40678ef
   - enabled: 1
     path: Assets/Scenes/EndScreen.unity
     guid: ec434e89c19f2d7448641670e603697b
-  - enabled: 0
-    path: Assets/Scenes/Jorge.unity
+  - enabled: 1
+    path: Assets/Scenes/Praia.unity
     guid: 348eb76ec61273a4b8b3d6b580acfc49
   m_configObjects: {}

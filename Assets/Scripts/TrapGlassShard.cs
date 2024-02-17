@@ -9,7 +9,6 @@ public class TrapGlassShard : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Player.Instance.TakeDamage(1);
-            Debug.Log("took 1 damage");
         }
     }
 }

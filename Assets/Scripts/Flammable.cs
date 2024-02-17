@@ -7,6 +7,6 @@ public class Flammable : MonoBehaviour
     public GameObject trap;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        trap.GetComponent<TrapPetrolOil>().onFire = true;
+        trap.GetComponent<TrapPetrolOil>().SetOnFire();
     }
 }

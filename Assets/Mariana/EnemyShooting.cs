@@ -10,6 +10,7 @@ public class EnemyShooting : MonoBehaviour
     public Transform bulletPos;
 
     private Animator anim;
+    private SpriteRenderer sprite;
 
     private float timer;
 
@@ -17,6 +18,7 @@ public class EnemyShooting : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         anim = GetComponent<Animator>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -38,7 +40,10 @@ public class EnemyShooting : MonoBehaviour
 
     void Shoot()
     {
-        Instantiate(bullet, bulletPos.position, Quaternion.identity);
+        var rb = Instantiate(bullet, bulletPos.position, Quaternion.identity).GetComponent<Rigidbody2D>();
+        Vector3 dir = sprite.flipX ? Vector3.right : Vector3.left;
+        rb.velocity = 5.0f * dir;
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -1,19 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TrapPetrolOil : MonoBehaviour
 {
-    [SerializeField] public bool onFire;
+    [SerializeField] private bool onFire;
     [SerializeField] private float timer;
     [SerializeField] private bool isIn = false;
+
+    [SerializeField] private GameObject m_FireVFX;
+
+    private void Awake()
+    {
+        GetComponent<SpriteRenderer>().color = Color.black;
+        if (onFire)
+        {
+            SetOnFire();
+        }
+    }
 
     // Update is called once per frame
     void Update()
     {
         if (onFire == true)
         {
-            this.GetComponent<SpriteRenderer>().color = Color.red;
             if (isIn)
             {
                 timer += Time.deltaTime;
@@ -23,10 +31,6 @@ public class TrapPetrolOil : MonoBehaviour
                     timer = 0;
                 }
             }
-        }
-        else
-        {
-            this.GetComponent<SpriteRenderer>().color = Color.black;
         }
     }
 
@@ -43,5 +47,12 @@ public class TrapPetrolOil : MonoBehaviour
     {
         isIn = false;
         timer = 0;
+    }
+
+    public void SetOnFire()
+    {
+        onFire = true;
+        GetComponent<SpriteRenderer>().color = Color.red;
+        m_FireVFX.SetActive(true);
     }
 }

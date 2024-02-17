@@ -60,6 +60,8 @@ public class Player : MonoBehaviour, IDamageable
 
     [SerializeField] private Animator m_ShellAnimator;
 
+    [SerializeField] private Collider2D m_HurtboxCollider;
+
     private Animator m_Animator;
 
     private Rigidbody2D m_RB;
@@ -84,6 +86,9 @@ public class Player : MonoBehaviour, IDamageable
     private Timer m_TurtleSwingImpactFrameTimer;
 
     private Timer m_DamageStateTimer;
+
+    private bool m_Invincible = false;
+    private Timer m_InvinvibleTimer;
 
     private bool m_StopAttacking;
 
@@ -119,6 +124,7 @@ public class Player : MonoBehaviour, IDamageable
         m_RootedTimer = new Timer();
         m_TurtleSwingImpactFrameTimer = new Timer();
         m_DamageStateTimer = new Timer();
+        m_InvinvibleTimer = new Timer();
 
         // Calculate jump initial velocity from max jump height
         float g = Physics2D.gravity.y * m_GravityMultiplier;
@@ -131,8 +137,22 @@ public class Player : MonoBehaviour, IDamageable
         m_Health = m_MaxHealth;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            m_Health = m_MaxHealth;
+        }
+    }
+
     private void FixedUpdate()
     {
+        if (m_Invincible && m_InvinvibleTimer.HasEnded())
+        {
+            m_Invincible = false;
+            m_HurtboxCollider.enabled = true;
+        }
+
         UpdateGroundedState();
 
         if (m_JumpInQueue && m_JumpBufferTimer.HasEnded())
@@ -316,6 +336,9 @@ public class Player : MonoBehaviour, IDamageable
             m_DamageStateTimer.Start(0.5f);
             m_Animator.Play(k_DamagedAnimStateId);
             m_ShellAnimator.Play(k_ShellIdleAnimStateId);
+            m_Invincible = true;
+            m_InvinvibleTimer.Start(1.5f);
+            m_HurtboxCollider.enabled = false;
         }
     }
 
@@ -323,6 +346,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         m_RootedTimer.Start(duration);
         m_CurrentState = State.Rooted;
+        m_RB.velocity = new(0f, m_RB.velocity.y);
         m_Animator.Play(k_FallAnimStateId);
         m_ShellAnimator.Play(k_ShellIdleAnimStateId);
     }
