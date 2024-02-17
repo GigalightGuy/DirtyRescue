@@ -70409,7 +70409,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 1374451741}
   m_HandleRect: {fileID: 513765481}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 0.0001
@@ -78916,7 +78916,7 @@ SpriteShapeRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -85594,7 +85594,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 1081162611}
   m_HandleRect: {fileID: 936627267}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 0.0001
