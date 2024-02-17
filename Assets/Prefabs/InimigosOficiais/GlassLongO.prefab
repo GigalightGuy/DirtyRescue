@@ -295,6 +295,7 @@ MonoBehaviour:
   maxHealth: 1
   anim: {fileID: 1068605873406037315}
   scoreSO: {fileID: 11400000, guid: df300d24fb248854a9f4cfd06c360530, type: 2}
+  m_DeathVFX: {fileID: 8049105863311694091, guid: 1152ab990fcb9b249ad58b729ddffe59, type: 3}
 --- !u!50 &2419897747617273329
 Rigidbody2D:
   serializedVersion: 4

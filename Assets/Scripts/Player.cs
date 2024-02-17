@@ -390,6 +390,8 @@ public class Player : MonoBehaviour, IDamageable
             m_RB.velocity = new(m_RB.velocity.x, 0f);
             m_RB.AddForce(10f * Vector2.up, ForceMode2D.Impulse);
             m_CurrentState = State.Jumping;
+            m_Animator.Play(k_JumpAnimStateId);
+            m_ShellAnimator.Play(k_ShellIdleAnimStateId);
         }
     }
 
