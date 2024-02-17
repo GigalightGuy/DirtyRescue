@@ -10,6 +10,10 @@ public class SOFloat : ScriptableObject
     public float Value
     {
         get { return _value; }
-        set { _value = value; }
+        set 
+        {
+            float inc = value - _value;
+            _value += inc * LevelManager.Instance.ScoreMultiplier;
+        }
     }
 }

@@ -165,6 +165,11 @@ public class Player : MonoBehaviour, IDamageable
             Jump();
         }
 
+        if (m_IsGrounded)
+        {
+            LevelManager.Instance.ScoreMultiplier = 1;
+        }
+
         switch (m_CurrentState)
         {
             case State.Idle:
@@ -419,6 +424,7 @@ public class Player : MonoBehaviour, IDamageable
             m_CurrentState = State.Jumping;
             m_Animator.Play(k_JumpAnimStateId);
             m_ShellAnimator.Play(k_ShellIdleAnimStateId);
+            LevelManager.Instance.ScoreMultiplier++;
         }
     }
 
@@ -512,6 +518,7 @@ public class Player : MonoBehaviour, IDamageable
 
     private void ShellSmash()
     {
+        m_DefendInput = false;
         m_RB.gravityScale = 4.5f;
         m_CurrentState = State.ShellSmash;
 

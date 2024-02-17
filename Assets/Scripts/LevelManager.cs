@@ -1,9 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+    public static LevelManager Instance => s_Instance;
+    private static LevelManager s_Instance;
+
+    public event Action<int> ScoreMultiplierChanged;
+
     [SerializeField] private GameObject m_PlayerCameraPrefab;
     [SerializeField] private Transform m_PlayerSpawnPoint;
 
@@ -15,8 +21,25 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private SOFloat scoreSO;
 
+    private int m_ScoreMultiplier = 1;
+    public int ScoreMultiplier
+    {
+        get => m_ScoreMultiplier;
+        set
+        {
+            ScoreMultiplierChanged?.Invoke(value);
+            m_ScoreMultiplier = value;
+        }
+    }
+
     private void Awake()
     {
+        if (s_Instance)
+        {
+            return;
+        }
+        s_Instance = this;
+
         if (!m_PlayerCameraPrefab)
         {
             Debug.LogError("Player prefab not assigned!");

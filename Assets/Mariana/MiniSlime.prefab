@@ -203,3 +203,4 @@ MonoBehaviour:
   maxHealth: 1
   anim: {fileID: 4378471163282244900}
   scoreSO: {fileID: 11400000, guid: df300d24fb248854a9f4cfd06c360530, type: 2}
+  m_DeathVFX: {fileID: 0}

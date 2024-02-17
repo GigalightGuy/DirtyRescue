@@ -22,7 +22,6 @@ public class PlayerController : MonoBehaviour
         m_InputActions.Player.Jump.performed += OnJumpInput;
         m_InputActions.Player.Jump.canceled += OnJumpInput;
 
-        m_InputActions.Player.Attack.performed += OnAttackInput;
 
         m_InputActions.Player.Defend.performed += OnDefendInput;
         m_InputActions.Player.Defend.canceled += OnDefendInput;
@@ -37,7 +36,6 @@ public class PlayerController : MonoBehaviour
         m_InputActions.Player.Jump.performed -= OnJumpInput;
         m_InputActions.Player.Jump.canceled -= OnJumpInput;
 
-        m_InputActions.Player.Attack.performed -= OnAttackInput;
 
         m_InputActions.Player.Defend.performed -= OnDefendInput;
         m_InputActions.Player.Defend.canceled -= OnDefendInput;
