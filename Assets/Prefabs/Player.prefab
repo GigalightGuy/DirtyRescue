@@ -289,18 +289,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22235c7d82acb964cbd0a59ec3c5ffbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MoveSpeed: 10
+  m_MoveSpeed: 8
   m_Acceleration: 7
   m_Deceleration: 7
   m_AccelerationExponent: 0.9
   m_BrakeForce: 0.2
-  m_MinJumpHeight: 1.25
-  m_MaxJumpHeight: 2.5
-  m_GravityMultiplier: 2
-  m_GravityMultiplierWhenFalling: 4
+  m_MinJumpHeight: 2
+  m_MaxJumpHeight: 3
+  m_GravityMultiplier: 1
+  m_GravityMultiplierWhenFalling: 3
   m_JumpBufferingTime: 0.2
   m_CoyoteTime: 0.15
-  m_MaxFallSpeed: 15
+  m_MaxFallSpeed: 13
   m_MaxHealth: 6
   m_Damage: 1
   m_TurtleSwingImpactFrameDuration: 0.1
@@ -496,6 +496,7 @@ GameObject:
   - component: {fileID: 8362576414001392413}
   - component: {fileID: 637412694456879194}
   - component: {fileID: 6117006676616142788}
+  - component: {fileID: 6489003185216202505}
   m_Layer: 14
   m_Name: Shell Defense
   m_TagString: Untagged
@@ -547,7 +548,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.006924033, y: 0.013848156}
@@ -605,3 +606,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6489003185216202505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8667871103899726336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 692a38d71ef064a41bda4b0608e72019, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
