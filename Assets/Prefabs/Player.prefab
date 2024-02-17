@@ -64,7 +64,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.13462508}
+  m_Offset: {x: 0, y: -0.09203467}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -75,7 +75,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.55557525, y: 0.7307501}
+  m_Size: {x: 0.55557525, y: 0.64556926}
   m_EdgeRadius: 0
 --- !u!1 &3025378900213187932
 GameObject:
@@ -294,13 +294,13 @@ MonoBehaviour:
   m_Deceleration: 7
   m_AccelerationExponent: 0.9
   m_BrakeForce: 0.2
-  m_MinJumpHeight: 2
-  m_MaxJumpHeight: 3
-  m_GravityMultiplier: 1
+  m_MinJumpHeight: 2.5
+  m_MaxJumpHeight: 4
+  m_GravityMultiplier: 1.7
   m_GravityMultiplierWhenFalling: 3
   m_JumpBufferingTime: 0.2
   m_CoyoteTime: 0.15
-  m_MaxFallSpeed: 13
+  m_MaxFallSpeed: 15
   m_MaxHealth: 6
   m_Damage: 1
   m_TurtleSwingImpactFrameDuration: 0.1

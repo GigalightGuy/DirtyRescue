@@ -315,6 +315,7 @@ public class Player : MonoBehaviour, IDamageable
             m_CurrentState = State.Damaged;
             m_DamageStateTimer.Start(0.5f);
             m_Animator.Play(k_DamagedAnimStateId);
+            m_ShellAnimator.Play(k_ShellIdleAnimStateId);
         }
     }
 
@@ -322,6 +323,8 @@ public class Player : MonoBehaviour, IDamageable
     {
         m_RootedTimer.Start(duration);
         m_CurrentState = State.Rooted;
+        m_Animator.Play(k_FallAnimStateId);
+        m_ShellAnimator.Play(k_ShellIdleAnimStateId);
     }
 
     public void SetMovementInput(float input)
