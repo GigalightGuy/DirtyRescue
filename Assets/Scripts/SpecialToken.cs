@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class SpecialToken : MonoBehaviour
 {
-    [SerializeField] private Image _blankImage;
+    [SerializeField] private Image m_TokenImage;
     [SerializeField] private Image _quickTimeBar;
     [SerializeField] private TMP_Text _keyToPress;
 
@@ -80,7 +80,7 @@ public class SpecialToken : MonoBehaviour
                 {
                     _quickTimeBar.transform.parent.gameObject.SetActive(false);
                     _freeze = true;
-                    _blankImage.gameObject.SetActive(false);
+                    m_TokenImage.enabled = true;
                     scoreSO.Value += 100;
                     oneTimeeffects = false;
                 }
