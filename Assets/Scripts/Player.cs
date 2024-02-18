@@ -67,6 +67,7 @@ public class Player : MonoBehaviour, IDamageable
     private Rigidbody2D m_RB;
 
     private bool m_IsGrounded = false;
+    public bool IsGrounded => m_IsGrounded;
 
     private float m_MoveInput = 0f;
 
